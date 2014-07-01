@@ -1,1 +1,1 @@
-var plot = new app.Plotter("graph", {});
+var plot = new app.Plotter("graph", {width: 555, height: 655});
