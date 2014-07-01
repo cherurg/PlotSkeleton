@@ -1,0 +1,1 @@
+var plot = new app.Plotter("graph", {});
