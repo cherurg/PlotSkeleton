@@ -5,13 +5,15 @@ var app = app || {};    //эта конструкция оставит app пр�
  * Функция создает локальную область вдимости. Внутрь нее передается переменная app. Функция добавляет в app новые
  * свойства.
  */
-(function (app) {
-     /**
+app.Plotter = (function () {
+    /**
      * Конструктор объекта Plotter. Служит для рисования графиков. Конструктор инициализируется как свойство app.
      * @param elementID ID DOM-элемента (т.е. элемента в HTML-странице), на котором будет рисоваться график
      * @param options
      */
-    app.Plotter = function (elementID, options) {
+    function Plotter(elementID, options) {
+        var field,
+            method;
 
         this.plotElementID = elementID;
 
@@ -21,23 +23,25 @@ var app = app || {};    //эта конструкция оставит app пр�
             return;
         }
 
-        if (!this.setWidth(options.width)) {
-            this.width = constants.width;
-        }
+        options = options || {};
+        for (field in defaults) {
+            if (!defaults.hasOwnProperty(field)) {
+                continue;
+            }
 
-        if (!this.setHeight(options.height)) {
-            this.height = constants.height;
-        }
-
-        if (!this.setPlaneBorder(options.planeBorder)) {
-            this.planeBorder = constants.planeBorder;
+            if (!options.hasOwnProperty(field)) {
+                this[field] = defaults[field];
+                continue;
+            }
+            method = "set" + field[0].toUpperCase() + field.substr(1);
+            this[method](options[field]);
         }
 
         console.log("Initialization complete");
         console.log(this.toString());
-    };
+    }
 
-    var p = app.Plotter.prototype;
+    var p = Plotter.prototype;
 
     p.setWidth = function (width) {
         if (typeof width === "number" && width > 0) {
@@ -74,9 +78,9 @@ var app = app || {};    //эта конструкция оставит app пр�
     p.toString = function () {
         var objectInformation = "";
 
-        objectInformation += "Width: " + this.getWidth();
+        objectInformation += "ElementID: " + this.getPlotElementID();
+        objectInformation += "\n" + "Width: " + this.getWidth();
         objectInformation += "\n" + "Height: " + this.getHeight();
-        objectInformation += "\n" + "ElementID: " + this.getPlotElementID();
         objectInformation += "\n" + "Plane border: " + this.getPlaneBorder();
 
         return objectInformation;
@@ -112,14 +116,16 @@ var app = app || {};    //эта конструкция оставит app пр�
         return this.planeBorder;
     };
 
-    p.getConstants = function () {
-        return constants;
+    Plotter.getDefaults = function () {
+        return defaults;
     };
 
-    var constants = {
+    var defaults = {
         width: 800,
         height: 600,
         planeBorder: [-10, 10, -5, 5]
     };
-}(app));
+
+    return Plotter;
+}());
 
