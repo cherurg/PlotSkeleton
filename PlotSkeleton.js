@@ -14,6 +14,7 @@ var app = app || {};    //эта конструкция оставит app пр�
     app.Plotter = function (elementID, options) {
 
         this.plotElementID = elementID;
+
         this.plot = document.getElementById(elementID);
         if (!this.plot) {
             console.log("Нет элемента с id " + elementID);
@@ -21,11 +22,15 @@ var app = app || {};    //эта конструкция оставит app пр�
         }
 
         if (!this.setWidth(options.width)) {
-            this.width = this.constants.width;
+            this.width = constants.width;
         }
 
         if (!this.setHeight(options.height)) {
-            this.height = this.constants.height;
+            this.height = constants.height;
+        }
+
+        if (!this.setPlaneBorder(options.planeBorder)) {
+            this.planeBorder = constants.planeBorder;
         }
 
         console.log("Initialization complete");
@@ -72,13 +77,49 @@ var app = app || {};    //эта конструкция оставит app пр�
         objectInformation += "Width: " + this.getWidth();
         objectInformation += "\n" + "Height: " + this.getHeight();
         objectInformation += "\n" + "ElementID: " + this.getPlotElementID();
+        objectInformation += "\n" + "Plane border: " + this.getPlaneBorder();
 
         return objectInformation;
     };
 
-    p.constants = {
+    /**
+     * Устанавливает границу прорисовки графика по осям
+     * @param planeBorder - состоит из 4-х чисел. Левая граница, правая граница, нижняя граница, верхняя граница.
+     */
+    p.setPlaneBorder = function (planeBorder) {
+        const length = 4;
+        var i,
+            a = planeBorder;
+
+        //Если это не массив или длина != 4 или нарушено взаимное положение границ, то ничего не присваивать.
+        if (!Array.isArray(a) || a.length !== length || !(a[1] > a[0] && a[3] > a[2])) {
+            return false;
+        }
+
+        this.planeBorder = [];
+        for (i = 0; i < length; i += 1) {
+            if (typeof a[i] === "number") {
+                this.planeBorder.push(a[i]);
+            } else {
+                console.log("Массив границ прорисовки должен состоять только из чисел");
+            }
+        }
+
+        return true;
+    };
+
+    p.getPlaneBorder = function () {
+        return this.planeBorder;
+    };
+
+    p.getConstants = function () {
+        return constants;
+    };
+
+    var constants = {
         width: 800,
-        height: 600
+        height: 600,
+        planeBorder: [-10, 10, -5, 5]
     };
 }(app));
 
