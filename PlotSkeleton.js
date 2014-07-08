@@ -138,19 +138,54 @@ app.Plotter = (function () {
     };
 
     p.redraw = function () {
-        var g = self.plot;
+        var g = self.plot,
+            x = d3.scale.linear()
+                .domain(self.planeBorder.slice(0, 2))
+                .range([0, self.width]),
+            y = d3.scale.linear()
+                .domain(self.planeBorder.slice(2, 4))
+                .range([0, self.height]),
+            xLines,
+            yLines,
+            xMarkers,
+            yMarkers,
+            center;
+
         g[0][0].innerHTML = "";
 
-        g
+        g = g
             .append("svg")
             .attr("width", self.width)
-            .attr("height", self.height)
+            .attr("height", self.height);
+        g
             .append("rect")
             .attr("width", self.width)
             .attr("height", self.height)
             .attr("stroke-width", 1)
             .attr("stroke", "#000000")
             .attr("fill-opacity", 0);
+
+        center = x.ticks(10).map(x)[5];
+        xLines = g.selectAll("g.x")
+            .data(x.ticks(10).map(x), String).enter()
+            .append("line")
+            .attr("x1", function (d) { return d; })
+            .attr("x2", function (d) { return d; })
+            .attr("y1", 0)
+            .attr("y2", self.height)
+            .attr("stroke-width", 0.5)
+            .attr("stroke", function (d) { return d == center ? "#000000" : "#bbbbbb" });
+
+        center = y.ticks(10).map(y)[5];
+        yLines = g.selectAll("g.y")
+            .data(y.ticks(10).map(y), String).enter()
+            .append("line")
+            .attr("x1", 0)
+            .attr("x2", self.width)
+            .attr("y1", function (d) { return d; })
+            .attr("y2", function (d) { return d; })
+            .attr("stroke-width", 0.5)
+            .attr("stroke", function (d) { return d == center ? "#000000" : "#bbbbbb" });
     };
 
     Plotter.getDefaults = function () {
