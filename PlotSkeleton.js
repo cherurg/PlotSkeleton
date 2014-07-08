@@ -13,7 +13,7 @@ app.Plotter = (function () {
      */
     function Plotter(elementID, options) {
         var field,
-            method;
+            setter;
 
         if (typeof elementID !== "string") {
             console.log("elementID должен быть строкой");
@@ -26,24 +26,36 @@ app.Plotter = (function () {
             return;
         }
 
+        //Если options существует, то не трогать его. Если он undefined, то присвоить options пустой объект.
         options = options || {};
+        //Внутри цикла встречаются конструкции вроде this[field]. this - это объект, а field - имя поля, к которому
+        // нужен доступ. Это второй из возможных способо обращения к полям объекта. Этот способ очень удобен в
+        // динамических задачах. Например, здесь используются все свойства из options, которые могут быть у Plotter и
+        // отбрасываются все остальные. Для работы этой конструкции необходимо всего лишь гарантировать что у каждого
+        // поля из defaults (объект объявлен ниже) есть свой сеттер в объекте Plotter.
         for (field in defaults) {
+            //Стандартная проверка при перечислении свойств объекта. Ее нужно делать каждый раз при перечислении свойств
+            // объекта. Некоторые свойства могут быть не собственными свойствами, а унаследованными.
             if (!defaults.hasOwnProperty(field)) {
                 continue;
             }
-
+            //Если у options нет такого поля, то Plotter'у нужно устанавить соответсвующее свойство стандартным.
             if (!options.hasOwnProperty(field)) {
                 this[field] = defaults[field];
                 continue;
             }
-            method = "set" + field[0].toUpperCase() + field.substr(1);
-            this[method](options[field]);
+            //Синтезирование имени сеттера по имени поля. Соглашение Java об именовании (оно применимо и к JS тоже)
+            // говорит, что сеттер для поля "имяПоля" должен иметь имя "set[ИмяПоля]". Обратите внимание на регистр.
+            setter = "set" + field[0].toUpperCase() + field.substr(1);
+            //Вызвать сеттер с соответсвующим аргументом из options.
+            this[setter](options[field]);
         }
 
         console.log("Initialization complete");
         console.log(this.toString());
     }
 
+    //Эта переменная нужна для небольшого сокращения названий методов ниже
     var p = Plotter.prototype;
 
     p.setWidth = function (width) {
