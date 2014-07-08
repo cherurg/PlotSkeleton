@@ -15,8 +15,11 @@ app.Plotter = (function () {
         var field,
             method;
 
+        if (typeof elementID !== "string") {
+            console.log("elementID должен быть строкой");
+            return;
+        }
         this.plotElementID = elementID;
-
         this.plot = document.getElementById(elementID);
         if (!this.plot) {
             console.log("Нет элемента с id " + elementID);
