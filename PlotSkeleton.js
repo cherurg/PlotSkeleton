@@ -11,17 +11,21 @@ app.Plotter = (function () {
      * @param elementID ID DOM-элемента (т.е. элемента в HTML-странице), на котором будет рисоваться график
      * @param options
      */
+    var self;
+
     function Plotter(elementID, options) {
         var field,
             setter;
+
+        self = this;
 
         if (typeof elementID !== "string") {
             console.log("elementID должен быть строкой");
             return;
         }
         this.plotElementID = elementID;
-        this.plot = document.getElementById(elementID);
-        if (!this.plot) {
+        this.plot = d3.select("#" + elementID);
+        if (!this.plot[0][0]) {
             console.log("Нет элемента с id " + elementID);
             return;
         }
@@ -53,6 +57,8 @@ app.Plotter = (function () {
 
         console.log("Initialization complete");
         console.log(this.toString());
+
+        this.redraw();
     }
 
     //Эта переменная нужна для небольшого сокращения названий методов ниже
@@ -129,6 +135,22 @@ app.Plotter = (function () {
 
     p.getPlaneBorder = function () {
         return this.planeBorder;
+    };
+
+    p.redraw = function () {
+        var g = self.plot;
+        g[0][0].innerHTML = "";
+
+        g
+            .append("svg")
+            .attr("width", self.width)
+            .attr("height", self.height)
+            .append("rect")
+            .attr("width", self.width)
+            .attr("height", self.height)
+            .attr("stroke-width", 1)
+            .attr("stroke", "#000000")
+            .attr("fill-opacity", 0);
     };
 
     Plotter.getDefaults = function () {
