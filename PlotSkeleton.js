@@ -141,36 +141,47 @@ app.Plotter = (function () {
         return this.planeBorder;
     };
 
+    Plotter.redrawUtilites = {
+        tx: function (d) {
+            return "translate(" + self.x(d) + ",0)";
+        },
+        ty: function (d) {
+            return "translate(0," + self.y(d) + ")";
+        },
+        stroke: function (d) {
+            return d ? "#ccc" : "#666";
+        },
+        stroke_width: function (d) {
+            return d ? "1" : "2";
+        }
+    };
+
     p.redraw = function () {
         if (!self.initialized) {
             init.call(self);
             self.initialized = true;
         }
 
-        var g = self.plot, tx, fx, gx, gxe, ty, fy, gy, gye,
+        var g = self.plot, gx, fx, gxe, ty, gy, gye,
             xTicks,
             yTicks,
-            zoom =  d3.behavior.zoom().x(self.x).y(self.y).on("zoom", self.redraw),
-            stroke = function (d) {
-                return d == 0 || d == -0 ? "#666" : "#ccc";
-            };
+            zoom =  d3.behavior.zoom().x(self.x).y(self.y).on("zoom", self.redraw);
 
-        tx = function (d) {
-            return "translate(" + self.x(d) + ",0)";
-        };
+
         fx = self.x.tickFormat(self.plotTicks);
 
-        xTicks = self.x.ticks(self.plotTicks);
+        xTicks = self.x.ticks(self.plotTicks).map(function (d) { return Math.abs(d) < 1e-10 ? 0 : d; });
         gx = g.selectAll("g.x")
             .data(xTicks, String)
-            .attr("transform", tx);
+            .attr("transform", Plotter.redrawUtilites.tx);
 
         gxe = gx.enter().insert("g")
             .attr("class", "x")
-            .attr("transform", tx);
+            .attr("transform", Plotter.redrawUtilites.tx);
 
         gxe.append("line")
-            .attr("stroke", stroke)
+            .attr("stroke", Plotter.redrawUtilites.stroke)
+            .attr("stroke-width", Plotter.redrawUtilites.stroke_width)
             .attr("y1", 0)
             .attr("y2", self.height);
 
@@ -181,31 +192,23 @@ app.Plotter = (function () {
             .attr("text-anchor", "middle")
             .text(fx)
             .style("cursor", "default");
-           /* .on("mouseover", function (d) {
-                d3.select(this).style("font-weight", "bold");
-            })
-            .on("mouseout", function (d) {
-                d3.select(this).style("font-weight", "normal");
-            });*/
 
         gx.exit().remove();
 
-        ty = function (d) {
-            return "translate(0," + self.y(d) + ")";
-        };
         fy = self.y.tickFormat(self.plotTicks);
 
-        yTicks = self.y.ticks(self.plotTicks);
+        yTicks = self.y.ticks(self.plotTicks).map(function (d) { return Math.abs(d) < 1e-10 ? 0 : d; });
         gy = g.selectAll("g.y")
             .data(yTicks, String)
-            .attr("transform", ty);
+            .attr("transform", Plotter.redrawUtilites.ty);
 
         gye = gy.enter().insert("g")
             .attr("class", "y")
-            .attr("transform", ty);
+            .attr("transform", Plotter.redrawUtilites.ty);
 
         gye.append("line")
-            .attr("stroke", stroke)
+            .attr("stroke", Plotter.redrawUtilites.stroke)
+            .attr("stroke-width", Plotter.redrawUtilites.stroke_width)
             .attr("x1", 0)
             .attr("x2", self.width);
 
@@ -216,16 +219,77 @@ app.Plotter = (function () {
             .attr("text-anchor", "middle")
             .text(fy)
             .style("cursor", "default");
-/*            .on("mouseover", function (d) {
-                d3.select(this).style("font-weight", "bold");
-            })
-            .on("mouseout", function (d) {
-                d3.select(this).style("font-weight", "normal");
-            });*/
 
         gy.exit().remove();
 
         g.call(zoom);
+
+        var i, length = self.points.length, point;
+        for (i = 0; i < length; i += 1) {
+            point = self.points[i];
+            point.pointElement
+                .attr("cx", self.x(point.x))
+                .attr("cy", self.y(point.y));
+        }
+    };
+
+    var pointsNumber = 0;
+    p.addPoint = function (x, y, options) {
+        var pointElement = this.plot
+            .append("circle")
+            .attr("class", function () { return "point num" + pointsNumber;})
+            .attr("cx", self.x(x))
+            .attr("cy", self.y(y))
+            .attr("r", 5)
+            .attr("color", "red"),
+            point = {
+            x: x,
+            y: y,
+            options: options,
+            pointNumber: pointsNumber++,
+            pointElement: pointElement
+        };
+        this.points.push(point);
+        self.redraw();
+
+        function getX() {
+            return point.x;
+        }
+        function setX(x) {
+            if (typeof x === "number") {
+                point.x = x;
+                return true;
+            }
+
+            return false;
+        }
+        function getY() {
+            return point.y;
+        }
+        function setY(y) {
+            if (typeof y === "number") {
+                point.y = y;
+                return true;
+            }
+
+            return false;
+        }
+
+
+        return {
+            getPointNumber: function () { return pointsNumber; },
+
+            getX: getX,
+            setX: setX,
+
+            getY: getY,
+            setY: setY
+        };
+    };
+    p.removePoint = function (pointNumber) {
+        var point = self.points.filter(function (d) { return d.pointNumber == pointNumber; })[0];
+        point.pointElement.remove();
+        self.points.splice(self.points.indexOf(point), 1);
     };
 
     Plotter.getDefaults = function () {
@@ -239,7 +303,7 @@ app.Plotter = (function () {
         plotTicks: 10,
         margin: {
             bottom: 20,
-            right: 25
+            right: 30
         }
     };
 
@@ -265,8 +329,9 @@ app.Plotter = (function () {
             .attr("stroke-width", 1)
             .attr("stroke", "#000000")
             .attr("fill-opacity", 0);
+
+        this.points = this.points || [];
     };
 
     return Plotter;
 }());
-
