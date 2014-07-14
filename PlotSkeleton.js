@@ -173,13 +173,13 @@ app.Plotter = (function () {
             .attr("dy", "1em")
             .attr("text-anchor", "middle")
             .text(fx)
-            .style("cursor", "ew-resize")
-            .on("mouseover", function (d) {
+            .style("cursor", "default");
+           /* .on("mouseover", function (d) {
                 d3.select(this).style("font-weight", "bold");
             })
             .on("mouseout", function (d) {
                 d3.select(this).style("font-weight", "normal");
-            });
+            });*/
 
         gx.exit().remove();
 
@@ -208,13 +208,13 @@ app.Plotter = (function () {
             .attr("dx", "1em")
             .attr("text-anchor", "middle")
             .text(fy)
-            .style("cursor", "ew-resize")
-            .on("mouseover", function (d) {
+            .style("cursor", "default");
+/*            .on("mouseover", function (d) {
                 d3.select(this).style("font-weight", "bold");
             })
             .on("mouseout", function (d) {
                 d3.select(this).style("font-weight", "normal");
-            });
+            });*/
 
         gy.exit().remove();
 
