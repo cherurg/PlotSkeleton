@@ -58,8 +58,7 @@ app.Plotter = (function () {
         console.log("Initialization complete");
         console.log(this.toString());
 
-        init.call(this);
-
+        this.initialized = false;
         this.redraw();
     }
 
@@ -68,6 +67,7 @@ app.Plotter = (function () {
 
     p.setWidth = function (width) {
         if (typeof width === "number" && width > 0) {
+            this.initialized = false;
             this.width = width;
             return width;
         } else {
@@ -82,6 +82,7 @@ app.Plotter = (function () {
 
     p.setHeight = function (height) {
         if (typeof height === "number" && height > 0) {
+            this.initialized = false;
             this.height = height;
             return height;
         } else {
@@ -123,6 +124,7 @@ app.Plotter = (function () {
             return false;
         }
 
+        this.initialized = false;
         this.planeBorder = [];
         for (i = 0; i < length; i += 1) {
             if (typeof a[i] === "number") {
@@ -140,6 +142,11 @@ app.Plotter = (function () {
     };
 
     p.redraw = function () {
+        if (!self.initialized) {
+            init.call(self);
+            self.initialized = true;
+        }
+
         var g = self.plot, tx, fx, gx, gxe, ty, fy, gy, gye,
             xTicks,
             yTicks,
@@ -237,6 +244,9 @@ app.Plotter = (function () {
     };
 
     var init = function () {
+        d3.select("#" + this.plotElementID)[0][0].innerHTML = "";
+        this.plot = d3.select("#" + this.plotElementID);
+
         this.x = d3.scale.linear()
             .domain(self.planeBorder.slice(0, 2))
             .range([0, self.width]);
