@@ -58,6 +58,8 @@ app.Plotter = (function () {
         console.log("Initialization complete");
         console.log(this.toString());
 
+        init.call(this);
+
         this.redraw();
     }
 
@@ -138,54 +140,85 @@ app.Plotter = (function () {
     };
 
     p.redraw = function () {
-        var g = self.plot,
-            x = d3.scale.linear()
-                .domain(self.planeBorder.slice(0, 2))
-                .range([0, self.width]),
-            y = d3.scale.linear()
-                .domain(self.planeBorder.slice(2, 4))
-                .range([0, self.height]),
-            xLines,
-            yLines,
-            xMarkers,
-            yMarkers,
-            center;
+        var g = self.plot, tx, fx, gx, gxe, ty, fy, gy, gye,
+            xTicks,
+            yTicks,
+            zoom =  d3.behavior.zoom().x(self.x).y(self.y).on("zoom", self.redraw),
+            stroke = function (d) {
+                return d == 0 || d == -0 ? "#666" : "#ccc";
+            };
 
-        g[0][0].innerHTML = "";
+        tx = function (d) {
+            return "translate(" + self.x(d) + ",0)";
+        };
+        fx = self.x.tickFormat(self.plotTicks);
 
-        g = g
-            .append("svg")
-            .attr("width", self.width)
-            .attr("height", self.height);
-        g
-            .append("rect")
-            .attr("width", self.width)
-            .attr("height", self.height)
-            .attr("stroke-width", 1)
-            .attr("stroke", "#000000")
-            .attr("fill-opacity", 0);
+        xTicks = self.x.ticks(self.plotTicks);
+        gx = g.selectAll("g.x")
+            .data(xTicks, String)
+            .attr("transform", tx);
 
-        center = x.ticks(10).map(x)[5];
-        xLines = g.selectAll("g.x")
-            .data(x.ticks(10).map(x), String).enter()
-            .append("line")
-            .attr("x1", function (d) { return d; })
-            .attr("x2", function (d) { return d; })
+        gxe = gx.enter().insert("g")
+            .attr("class", "x")
+            .attr("transform", tx);
+
+        gxe.append("line")
+            .attr("stroke", stroke)
             .attr("y1", 0)
-            .attr("y2", self.height)
-            .attr("stroke-width", 0.5)
-            .attr("stroke", function (d) { return d == center ? "#000000" : "#bbbbbb" });
+            .attr("y2", self.height);
 
-        center = y.ticks(10).map(y)[5];
-        yLines = g.selectAll("g.y")
-            .data(y.ticks(10).map(y), String).enter()
-            .append("line")
+        gxe.append("text")
+            .attr("class", "axis")
+            .attr("y", self.height)
+            .attr("dy", "1em")
+            .attr("text-anchor", "middle")
+            .text(fx)
+            .style("cursor", "ew-resize")
+            .on("mouseover", function (d) {
+                d3.select(this).style("font-weight", "bold");
+            })
+            .on("mouseout", function (d) {
+                d3.select(this).style("font-weight", "normal");
+            });
+
+        gx.exit().remove();
+
+        ty = function (d) {
+            return "translate(0," + self.y(d) + ")";
+        };
+        fy = self.y.tickFormat(self.plotTicks);
+
+        yTicks = self.y.ticks(self.plotTicks);
+        gy = g.selectAll("g.y")
+            .data(yTicks, String)
+            .attr("transform", ty);
+
+        gye = gy.enter().insert("g")
+            .attr("class", "y")
+            .attr("transform", ty);
+
+        gye.append("line")
+            .attr("stroke", stroke)
             .attr("x1", 0)
-            .attr("x2", self.width)
-            .attr("y1", function (d) { return d; })
-            .attr("y2", function (d) { return d; })
-            .attr("stroke-width", 0.5)
-            .attr("stroke", function (d) { return d == center ? "#000000" : "#bbbbbb" });
+            .attr("x2", self.width);
+
+        gye.append("text")
+            .attr("class", "axis")
+            .attr("x", self.width)
+            .attr("dx", "1em")
+            .attr("text-anchor", "middle")
+            .text(fy)
+            .style("cursor", "ew-resize")
+            .on("mouseover", function (d) {
+                d3.select(this).style("font-weight", "bold");
+            })
+            .on("mouseout", function (d) {
+                d3.select(this).style("font-weight", "normal");
+            });
+
+        gy.exit().remove();
+
+        g.call(zoom);
     };
 
     Plotter.getDefaults = function () {
@@ -195,7 +228,33 @@ app.Plotter = (function () {
     var defaults = {
         width: 800,
         height: 600,
-        planeBorder: [-10, 10, -5, 5]
+        planeBorder: [-10, 10, -5, 5],
+        plotTicks: 10,
+        margin: {
+            bottom: 20,
+            right: 25
+        }
+    };
+
+    var init = function () {
+        this.x = d3.scale.linear()
+            .domain(self.planeBorder.slice(0, 2))
+            .range([0, self.width]);
+        this.y = d3.scale.linear()
+            .domain(self.planeBorder.slice(2, 4).reverse())
+            .range([0, self.height]);
+
+        this.plot = this.plot
+            .append("svg")
+            .attr("width", self.width + self.margin.right)
+            .attr("height", self.height + self.margin.bottom);
+        this.plot
+            .append("rect")
+            .attr("width", self.width)
+            .attr("height", self.height)
+            .attr("stroke-width", 1)
+            .attr("stroke", "#000000")
+            .attr("fill-opacity", 0);
     };
 
     return Plotter;
