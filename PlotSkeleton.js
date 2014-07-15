@@ -256,76 +256,94 @@ app.Plotter = (function () {
         }
     };
 
-    var pointsNumber = 0;
-    p.addPoint = function (x, y, options) {
-        var pointElement = this.plot
-                .append("circle")
-                .attr("class", function () {
-                    return "point num" + pointsNumber;
-                })
-                .attr("cx", self.x(x))
-                .attr("cy", self.y(y))
-                .attr("r", 5)
-                .attr("color", "red"),
-            point = {
-                x: x,
-                y: y,
-                options: options,
-                pointNumber: pointsNumber++,
-                element: pointElement
+    var removeElement = function (n, arr, name) {
+        var o = arr.filter(function (d) { return d.number == n; })[0];
+        if (!o) {
+            console.log("Нет " + name + " с номером " + n);
+            return false;
+        }
+        o.element.remove();
+        arr.splice(arr.indexOf(o), 1);
+        return true;
+    };
+    (function Point() {
+        var number = 0;
+        p.addPoint = function (x, y, options) {
+            var pointElement = this.plot
+                    .append("circle")
+                    .attr("class", function () {
+                        return "point num" + number;
+                    })
+                    .attr("cx", self.x(x))
+                    .attr("cy", self.y(y))
+                    .attr("r", 5)
+                    .attr("color", "red"),
+                point = {
+                    x: x,
+                    y: y,
+                    options: options,
+                    number: number++,
+                    element: pointElement
+                };
+            if (options && options.movable === true) {
+                point.movable = true;
+            }
+            this.points.push(point);
+            self.redraw();
+
+            function getX() {
+                return point.x;
+            }
+
+            function setX(x) {
+                if (typeof x === "number") {
+                    point.x = x;
+                    return true;
+                }
+
+                return false;
+            }
+
+            function getY() {
+                return point.y;
+            }
+
+            function setY(y) {
+                if (typeof y === "number") {
+                    point.y = y;
+                    return true;
+                }
+
+                return false;
+            }
+
+
+            return {
+                getPointNumber: function () {
+                    return point.number;
+                },
+
+                getX: getX,
+                setX: setX,
+
+                getY: getY,
+                setY: setY
             };
-        if (options && options.movable === true) {
-            point.movable = true;
-        }
-        this.points.push(point);
-        self.redraw();
-
-        function getX() {
-            return point.x;
-        }
-
-        function setX(x) {
-            if (typeof x === "number") {
-                point.x = x;
-                return true;
-            }
-
-            return false;
-        }
-
-        function getY() {
-            return point.y;
-        }
-
-        function setY(y) {
-            if (typeof y === "number") {
-                point.y = y;
-                return true;
-            }
-
-            return false;
-        }
-
-
-        return {
-            getPointNumber: function () {
-                return pointsNumber;
-            },
-
-            getX: getX,
-            setX: setX,
-
-            getY: getY,
-            setY: setY
         };
-    };
-    p.removePoint = function (pointNumber) {
-        var point = self.points.filter(function (d) {
-            return d.pointNumber == pointNumber;
-        })[0];
-        point.element.remove();
-        self.points.splice(self.points.indexOf(point), 1);
-    };
+        p.removePoint = function (pointNumber) {
+            return removeElement(pointNumber, self.points, "point");
+        };
+    })();
+    (function Line() {
+        var number = 0;
+        p.addLine = function (x1, y1, x2, y2, options) {
+
+        };
+
+        p.removeLine = function (lineNumber) {
+            return removeElement(lineNumber, self.lines, "line");
+        }
+    })();
 
     Plotter.getDefaults = function () {
         return defaults;
