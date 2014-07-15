@@ -162,15 +162,17 @@ app.Plotter = (function () {
             self.initialized = true;
         }
 
-        var g = self.plot, gx, fx, gxe, ty, gy, gye,
+        var g = self.plot, gx, fx, gxe, gy, gye,
             xTicks,
             yTicks,
-            zoom =  d3.behavior.zoom().x(self.x).y(self.y).on("zoom", self.redraw);
+            zoom = d3.behavior.zoom().x(self.x).y(self.y).on("zoom", self.redraw);
 
 
         fx = self.x.tickFormat(self.plotTicks);
 
-        xTicks = self.x.ticks(self.plotTicks).map(function (d) { return Math.abs(d) < 1e-10 ? 0 : d; });
+        xTicks = self.x.ticks(self.plotTicks).map(function (d) {
+            return Math.abs(d) < 1e-10 ? 0 : d;
+        });
         gx = g.selectAll("g.x")
             .data(xTicks, String)
             .attr("transform", Plotter.redrawUtilites.tx);
@@ -197,7 +199,9 @@ app.Plotter = (function () {
 
         fy = self.y.tickFormat(self.plotTicks);
 
-        yTicks = self.y.ticks(self.plotTicks).map(function (d) { return Math.abs(d) < 1e-10 ? 0 : d; });
+        yTicks = self.y.ticks(self.plotTicks).map(function (d) {
+            return Math.abs(d) < 1e-10 ? 0 : d;
+        });
         gy = g.selectAll("g.y")
             .data(yTicks, String)
             .attr("transform", Plotter.redrawUtilites.ty);
@@ -227,34 +231,59 @@ app.Plotter = (function () {
         var i, length = self.points.length, point;
         for (i = 0; i < length; i += 1) {
             point = self.points[i];
-            point.pointElement
+            point.element
                 .attr("cx", self.x(point.x))
                 .attr("cy", self.y(point.y));
+            if (point.movable) {
+                (function (point) {
+                    point.element
+                        .call(d3.behavior.drag()
+                            .on("drag", function () {
+                                var cx = point.element.attr("cx"),
+                                    cy = point.element.attr("cy"),
+                                    dx = d3.event.dx,
+                                    dy = d3.event.dy;
+
+                                point.element
+                                    .attr("cx", +cx + dx)
+                                    .attr("cy", +cy + dy);
+
+                                point.x = self.x.invert(point.element.attr("cx"));
+                                point.y = self.y.invert(point.element.attr("cy"));
+                            }));
+                })(point);
+            }
         }
     };
 
     var pointsNumber = 0;
     p.addPoint = function (x, y, options) {
         var pointElement = this.plot
-            .append("circle")
-            .attr("class", function () { return "point num" + pointsNumber;})
-            .attr("cx", self.x(x))
-            .attr("cy", self.y(y))
-            .attr("r", 5)
-            .attr("color", "red"),
+                .append("circle")
+                .attr("class", function () {
+                    return "point num" + pointsNumber;
+                })
+                .attr("cx", self.x(x))
+                .attr("cy", self.y(y))
+                .attr("r", 5)
+                .attr("color", "red"),
             point = {
-            x: x,
-            y: y,
-            options: options,
-            pointNumber: pointsNumber++,
-            pointElement: pointElement
-        };
+                x: x,
+                y: y,
+                options: options,
+                pointNumber: pointsNumber++,
+                element: pointElement
+            };
+        if (options && options.movable === true) {
+            point.movable = true;
+        }
         this.points.push(point);
         self.redraw();
 
         function getX() {
             return point.x;
         }
+
         function setX(x) {
             if (typeof x === "number") {
                 point.x = x;
@@ -263,9 +292,11 @@ app.Plotter = (function () {
 
             return false;
         }
+
         function getY() {
             return point.y;
         }
+
         function setY(y) {
             if (typeof y === "number") {
                 point.y = y;
@@ -277,7 +308,9 @@ app.Plotter = (function () {
 
 
         return {
-            getPointNumber: function () { return pointsNumber; },
+            getPointNumber: function () {
+                return pointsNumber;
+            },
 
             getX: getX,
             setX: setX,
@@ -287,8 +320,10 @@ app.Plotter = (function () {
         };
     };
     p.removePoint = function (pointNumber) {
-        var point = self.points.filter(function (d) { return d.pointNumber == pointNumber; })[0];
-        point.pointElement.remove();
+        var point = self.points.filter(function (d) {
+            return d.pointNumber == pointNumber;
+        })[0];
+        point.element.remove();
         self.points.splice(self.points.indexOf(point), 1);
     };
 
