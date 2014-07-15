@@ -254,10 +254,28 @@ app.Plotter = (function () {
                 })(point);
             }
         }
-    };
 
+        length = self.lines.length;
+        var line;
+        for (i = 0; i < length; i += 1) {
+            line = self.lines[i];
+            line.element
+                .attr("x1", self.x(line.x1))
+                .attr("x2", self.x(line.x2))
+                .attr("y1", self.y(line.y1))
+                .attr("y2", self.y(line.y2));
+        }
+     };
+
+    var findElement = function (n, arr) {
+        var o = arr.filter(function (d) {
+            return d.number == n;
+        })[0];
+
+        return o ? o : false;
+    };
     var removeElement = function (n, arr, name) {
-        var o = arr.filter(function (d) { return d.number == n; })[0];
+        var o = findElement(n, arr);
         if (!o) {
             console.log("Нет " + name + " с номером " + n);
             return false;
@@ -269,15 +287,15 @@ app.Plotter = (function () {
     (function Point() {
         var number = 0;
         p.addPoint = function (x, y, options) {
-            var pointElement = this.plot
+            var pointElement = self.plot
                     .append("circle")
                     .attr("class", function () {
                         return "point num" + number;
                     })
                     .attr("cx", self.x(x))
                     .attr("cy", self.y(y))
-                    .attr("r", 5)
-                    .attr("color", "red"),
+                    .attr("r", defaults.pointRadius)
+                    .attr("fill", "red"),
                 point = {
                     x: x,
                     y: y,
@@ -319,7 +337,7 @@ app.Plotter = (function () {
 
 
             return {
-                getPointNumber: function () {
+                getNumber: function () {
                     return point.number;
                 },
 
@@ -336,8 +354,118 @@ app.Plotter = (function () {
     })();
     (function Line() {
         var number = 0;
-        p.addLine = function (x1, y1, x2, y2, options) {
 
+        p.addLine = function (x1, y1, x2, y2, options) {
+            var line = {};
+            line.tornLeft = false;
+            line.tornRight = false;
+            line.k = (y2 - y1) / (x2 - x1);
+            line.func = (function (x1, y1, x2, y2, k) {
+                return function (x) {
+                    return k * (x - x1) + y1;
+                };
+            })();
+            line.x1 = x1;
+            line.x2 = x2;
+            line.y1 = y1;
+            line.y2 = y2;
+            line.number = number++;
+
+            line.element = self.plot
+                .append("line")
+                .attr("class", function () {
+                    return "line num" + line.number;
+                })
+                .attr("x1", self.x(x1))
+                .attr("x2", self.x(x2))
+                .attr("y1", self.y(y1))
+                .attr("y2", self.y(y2))
+                .attr("style", "stroke:rgb(0,0,0);stroke-width:2");
+
+            if (options && options.tornLeft === true) {
+                line.tornLeft = true;
+            }
+
+            if (options && options.tornRight === true) {
+                line.tornRight = true;
+            }
+
+            self.lines = self.lines || [];
+            self.lines.push(line);
+
+            if (line.tornLeft || line.tornRight) {
+                updateLine(line.number);
+            }
+
+            function getX1() {
+                return line.x1;
+            }
+            function setX1(x1) {
+                if (typeof x1 === "number") {
+                    line.x1 = x1;
+                    return true;
+                }
+
+                return false;
+            }
+            function getX2() {
+                return line.x2;
+            }
+            function setX2(x2) {
+                if (typeof x2 === "number") {
+                    line.x2 = x2;
+                    return true;
+                }
+
+                return false;
+            }
+            function getY1() {
+                return line.y1;
+            }
+            function setY1(y1) {
+                if (typeof y1 === "number") {
+                    line.y1 = y1;
+                    return true;
+                }
+
+                return false;
+            }
+            function getY2() {
+                return line.y2;
+            }
+            function setY2(y2) {
+                if (typeof y2 === "number") {
+                    line.y2 = y2;
+                    return true;
+                }
+
+                return false;
+            }
+            function getNumber() {
+                return line.number;
+            }
+            function getFunc() {
+                return line.func;
+            }
+
+            return {
+                getX1: getX1,
+                setX1: setX1,
+                getX2: getX2,
+                setX2: setX2,
+                getY1: getY1,
+                setY1: setY1,
+                getY2: getY2,
+                setY2: setY2,
+                getNumber: getNumber,
+                getFunc: getFunc
+            }
+        };
+
+        var updateLine = function (n) {
+/*            var line = findElement(n, self.lines);
+            line.element.remove();
+            */
         };
 
         p.removeLine = function (lineNumber) {
@@ -357,7 +485,9 @@ app.Plotter = (function () {
         margin: {
             bottom: 20,
             right: 30
-        }
+        },
+        magicDrawingRange: 0.2,
+        pointRadius: 5
     };
 
     var init = function () {
@@ -384,6 +514,7 @@ app.Plotter = (function () {
             .attr("fill-opacity", 0);
 
         this.points = this.points || [];
+        this.lines = this.lines || [];
     };
 
     return Plotter;
