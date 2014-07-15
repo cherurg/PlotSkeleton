@@ -6,13 +6,32 @@ var app = app || {};    //эта конструкция оставит app пр�
  * свойства.
  */
 app.Plotter = (function () {
+    var self,
+    p = Plotter.prototype,     //Эта переменная нужна для небольшого сокращения названий методов ниже
+    defaults = {
+        width: 800,
+        height: 600,
+        planeBorder: [-10, 10, -5, 5],
+        plotTicks: 10,
+        margin: {
+            bottom: 20,
+            right: 30
+        },
+        magicDrawingRange: 1.2,
+        pointRadius: 5,
+        graphAccuracy: 300
+    },
+    arrayNamesToInit = [
+        "points",
+        "lines",
+        "functions"
+    ];
+
     /**
      * Конструктор объекта Plotter. Служит для рисования графиков. Конструктор инициализируется как свойство app.
      * @param elementID ID DOM-элемента (т.е. элемента в HTML-странице), на котором будет рисоваться график
      * @param options
      */
-    var self;
-
     function Plotter(elementID, options) {
         var field,
             setter;
@@ -61,9 +80,6 @@ app.Plotter = (function () {
         this.initialized = false;
         this.redraw();
     }
-
-    //Эта переменная нужна для небольшого сокращения названий методов ниже
-    var p = Plotter.prototype;
 
     p.setWidth = function (width) {
         if (typeof width === "number" && width > 0) {
@@ -274,14 +290,14 @@ app.Plotter = (function () {
         }
      };
 
-    var findElement = function (n, arr) {
+    function findElement(n, arr) {
         var o = arr.filter(function (d) {
             return d.number == n;
         })[0];
 
         return o ? o : false;
-    };
-    var removeElement = function (n, arr, name) {
+    }
+    function removeElement(n, arr, name) {
         var o = findElement(n, arr);
         if (!o) {
             console.log("Нет " + name + " с номером " + n);
@@ -290,7 +306,7 @@ app.Plotter = (function () {
         o.element.remove();
         arr.splice(arr.indexOf(o), 1);
         return true;
-    };
+    }
     (function Point() {
         var number = 0;
         p.addPoint = function (x, y, options) {
@@ -546,26 +562,7 @@ app.Plotter = (function () {
         return defaults;
     };
 
-    var defaults = {
-        width: 800,
-        height: 600,
-        planeBorder: [-10, 10, -5, 5],
-        plotTicks: 10,
-        margin: {
-            bottom: 20,
-            right: 30
-        },
-        magicDrawingRange: 1.2,
-        pointRadius: 5,
-        graphAccuracy: 300
-    };
-
-    var arrayNamesToInit = [
-        "points",
-        "lines",
-        "functions"
-    ];
-    var init = function () {
+    function init() {
         d3.select("#" + this.plotElementID)[0][0].innerHTML = "";
         this.plot = d3.select("#" + this.plotElementID);
 
@@ -600,7 +597,7 @@ app.Plotter = (function () {
             name = arrayNamesToInit[i];
             this[name] = this[name] || [];
         }
-    };
+    }
 
     return Plotter;
 }());
