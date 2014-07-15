@@ -10,6 +10,7 @@
     var line2 = plot.addLine(-1, -1, 4, 3);
     setTimeout(function () {
         line.setX1(-2);
+        plot.removeFunc(func1.getNumber());
         plot.redraw();
     }, 2000);
     plot.removeLine(line2.getNumber());
@@ -18,4 +19,7 @@
 
     var badLine = plot.addLine(1, 1, 1, 2);
     console.log("badLine number: " + badLine.getNumber());
+
+    var func1 = plot.addFunc(Math.cos);
+    var func2 = plot.addFunc(function (x) { return x*x; });
 })();

@@ -162,9 +162,8 @@ app.Plotter = (function () {
             self.initialized = true;
         }
 
-        var g = self.plot, gx, fx, gxe, gy, gye,
-            xTicks,
-            yTicks,
+        var gx, fx, fy, gxe, gy, gye, xTicks, yTicks,
+            g = self.plot,
             zoom = d3.behavior.zoom().x(self.x).y(self.y).on("zoom", self.redraw);
 
 
@@ -265,6 +264,14 @@ app.Plotter = (function () {
                 .attr("y1", self.y(line.y1))
                 .attr("y2", self.y(line.y2));
         }
+
+        length = self.functions.length;
+        var func;
+        for (i = 0; i < length; i += 1) {
+            func = self.functions[i];
+            func.element
+                .attr("d", func.path(func.points));
+        }
      };
 
     var findElement = function (n, arr) {
@@ -287,7 +294,7 @@ app.Plotter = (function () {
     (function Point() {
         var number = 0;
         p.addPoint = function (x, y, options) {
-            var pointElement = self.plot
+            var pointElement = self.graphPlace
                     .append("circle")
                     .attr("class", function () {
                         return "point num" + number;
@@ -312,7 +319,6 @@ app.Plotter = (function () {
             function getX() {
                 return point.x;
             }
-
             function setX(x) {
                 if (typeof x === "number") {
                     point.x = x;
@@ -321,11 +327,9 @@ app.Plotter = (function () {
 
                 return false;
             }
-
             function getY() {
                 return point.y;
             }
-
             function setY(y) {
                 if (typeof y === "number") {
                     point.y = y;
@@ -334,12 +338,12 @@ app.Plotter = (function () {
 
                 return false;
             }
-
+            function getNumber() {
+                return point.number;
+            }
 
             return {
-                getNumber: function () {
-                    return point.number;
-                },
+                getNumber: getNumber,
 
                 getX: getX,
                 setX: setX,
@@ -372,7 +376,7 @@ app.Plotter = (function () {
             line.y2 = y2;
             line.number = number++;
 
-            line.element = self.plot
+            line.element = self.graphPlace
                 .append("line")
                 .attr("class", function () {
                     return "line num" + line.number;
@@ -391,7 +395,6 @@ app.Plotter = (function () {
                 line.tornRight = true;
             }
 
-            self.lines = self.lines || [];
             self.lines.push(line);
 
             if (line.tornLeft || line.tornRight) {
@@ -475,9 +478,64 @@ app.Plotter = (function () {
     })();
     (function Func() {
         var number = 0;
-        p.addFunc = function (rangeLeft, rangeRight, func) {
-            var _ = {};
+        p.addFunc = function (func, rangeLeft, rangeRight) {
+            var i, step, x, y, d3line,
+                _rangeLeft = Math.max(self.x.domain()[0], rangeLeft ? rangeLeft : Number.NEGATIVE_INFINITY),
+                _rangeRight = Math.min(self.x.domain()[1], rangeRight ? rangeRight : Number.POSITIVE_INFINITY),
+                points = [],
+                length = defaults.graphAccuracy,
+                _ = {};
+
             _.number = number++;
+            _.func = func;
+
+            _rangeLeft *= defaults.magicDrawingRange;
+            _rangeRight *= defaults.magicDrawingRange;
+            step = (_rangeRight - _rangeLeft)/length;
+            x = _rangeLeft;
+            for (i = 0; i < length; i += 1) {
+                y = func(x);
+                points.push([x, y]);
+                x += step;
+            }
+            _.points = points;
+
+            d3line = d3.svg.line()
+                .x(function (d) {
+                    return self.x(d[0]);
+                })
+                .y(function (d) {
+                    return self.y(d[1]);
+                });
+
+            _.element = self.graphPlace
+                .append("path")
+                .attr("fill", "none")
+                .attr("stroke-width", 2)
+                .attr("stroke", "#000000")
+                .attr("class", function () {
+                    return "function num" + _.number;
+                })
+                .attr("d", d3line(points));
+            _.path = d3line;
+
+            self.functions.push(_);
+
+            function getFunc() {
+                return _.func;
+            }
+            function getPoints() {
+                return _.points;
+            }
+            function getNumber() {
+                return _.number;
+            }
+
+            return {
+                getFunc: getFunc,
+                getPoints: getPoints,
+                getNumber: getNumber
+            }
         };
         p.removeFunc = function (funcNumber) {
             return removeElement(funcNumber, self.functions, "function");
@@ -497,8 +555,9 @@ app.Plotter = (function () {
             bottom: 20,
             right: 30
         },
-        magicDrawingRange: 0.2,
-        pointRadius: 5
+        magicDrawingRange: 1.2,
+        pointRadius: 5,
+        graphAccuracy: 300
     };
 
     var arrayNamesToInit = [
@@ -528,6 +587,12 @@ app.Plotter = (function () {
             .attr("stroke-width", 1)
             .attr("stroke", "#000000")
             .attr("fill-opacity", 0);
+
+        this.graphPlace = this.plot
+            .append("svg")
+            .attr("width", self.width)
+            .attr("height", self.height)
+            .attr("viewBox", "0 0 " + self.width + " " + self.height);
 
         var i, name,
             length = arrayNamesToInit.length;
