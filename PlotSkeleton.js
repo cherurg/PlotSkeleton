@@ -361,9 +361,10 @@ app.Plotter = (function () {
             line.tornRight = false;
             line.k = (y2 - y1) / (x2 - x1);
             line.func = (function (x1, y1, x2, y2, k) {
-                return function (x) {
+                var f = function (x) {
                     return k * (x - x1) + y1;
                 };
+                return k ? f : function () { return undefined; }
             })();
             line.x1 = x1;
             line.x2 = x2;
@@ -472,6 +473,16 @@ app.Plotter = (function () {
             return removeElement(lineNumber, self.lines, "line");
         }
     })();
+    (function Func() {
+        var number = 0;
+        p.addFunc = function (rangeLeft, rangeRight, func) {
+            var _ = {};
+            _.number = number++;
+        };
+        p.removeFunc = function (funcNumber) {
+            return removeElement(funcNumber, self.functions, "function");
+        };
+    })();
 
     Plotter.getDefaults = function () {
         return defaults;
@@ -490,6 +501,11 @@ app.Plotter = (function () {
         pointRadius: 5
     };
 
+    var arrayNamesToInit = [
+        "points",
+        "lines",
+        "functions"
+    ];
     var init = function () {
         d3.select("#" + this.plotElementID)[0][0].innerHTML = "";
         this.plot = d3.select("#" + this.plotElementID);
@@ -513,8 +529,12 @@ app.Plotter = (function () {
             .attr("stroke", "#000000")
             .attr("fill-opacity", 0);
 
-        this.points = this.points || [];
-        this.lines = this.lines || [];
+        var i, name,
+            length = arrayNamesToInit.length;
+        for (i = 0; i < length; i += 1) {
+            name = arrayNamesToInit[i];
+            this[name] = this[name] || [];
+        }
     };
 
     return Plotter;

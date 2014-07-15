@@ -15,4 +15,7 @@
     plot.removeLine(line2.getNumber());
     console.log("point2 number: " + point2.getNumber());
     //plot.removeLine(line.getNumber());
+
+    var badLine = plot.addLine(1, 1, 1, 2);
+    console.log("badLine number: " + badLine.getNumber());
 })();
