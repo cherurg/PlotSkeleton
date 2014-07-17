@@ -14,6 +14,7 @@
         line.setX1(-2);
         plot.removeFunc(func1.getNumber());
         plot.redraw();
+        plot.removeGraphArea(area);
     }, 2000);
     plot.removeLine(line2.getNumber());
     console.log("point2 number: " + point2.getNumber());
@@ -24,4 +25,6 @@
 
     var func1 = plot.addFunc(Math.cos);
     var func2 = plot.addFunc(function (x) { return x*x; });
+
+    var area = plot.addGraphArea(func2, 0, 1, "x");
 })();
