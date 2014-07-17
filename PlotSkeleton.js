@@ -281,13 +281,23 @@ app.Plotter = function (self) {
                 .attr("y2", self.y(line.y2));
         }
 
-        length = self.functions.length;
+/*        length = self.functions.length;
         var func;
         for (i = 0; i < length; i += 1) {
             func = self.functions[i];
             func.element
                 .attr("d", func.getPath());
-        }
+        }*/
+
+        self.functions.forEach(function (func) {
+            func.element
+                .attr("d", func.getPath());
+        });
+
+        self.graphAreas.forEach(function (graphArea) {
+            graphArea.element
+                .attr("d", graphArea.getPath());
+        });
 
         (function order() {
             self.graphPlace.each(function () {
@@ -584,7 +594,7 @@ app.Plotter = function (self) {
             return removeElement(funcNumber, self.functions, "function");
         };
     })();
-    (function Area() {
+    (function GraphArea() {
         var number = 0;
         p.addGraphArea = function (funcNumber, rangeLeft, rangeRight, axe, options) {
             var n = funcNumber,
@@ -635,11 +645,27 @@ app.Plotter = function (self) {
                 getter();
                 return o.path(o.points);
             }
-
+            function setRangeLeft(rl) {
+                if (typeof rl !== "number") {
+                    return false;
+                }
+                rangeLeft = rl;
+                return true;
+            }
+            function setRangeRight(rr) {
+                if (typeof rr !== "number") {
+                    return false;
+                }
+                rangeRight = rr;
+                return true;
+            }
+            o.getPath = getPath;
             return {
                 getPoints: getter,
                 getRangeLeft: function () { return rangeLeft; },
+                setRangeLeft: setRangeLeft,
                 getRangeRight: function () { return rangeRight; },
+                setRangeRight: setRangeRight,
                 getNumber: getNumber
             }
         };

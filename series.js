@@ -17,6 +17,7 @@
             plot.removeFunc(func1.getNumber());
             plot.redraw();
             plot.removeGraphArea(area);
+            area2.setRangeRight(3.5);
         }, 2000);
         plot.removeLine(line2.getNumber());
         console.log("point2 number: " + point2.getNumber());
