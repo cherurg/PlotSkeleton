@@ -131,9 +131,9 @@ app.Plotter = function (self) {
      * @param planeBorder - состоит из 4-х чисел. Левая граница, правая граница, нижняя граница, верхняя граница.
      */
     p.setPlaneBorder = function (planeBorder) {
-        const length = 4;
-        var i,
-            a = planeBorder;
+        var length = 4,
+            a = planeBorder,
+            i;
 
         //Если это не массив или длина != 4 или нарушено взаимное положение границ, то ничего не присваивать.
         if (!Array.isArray(a) || a.length !== length || !(a[1] > a[0] && a[3] > a[2])) {
