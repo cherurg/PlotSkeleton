@@ -6,8 +6,7 @@ var app = app || {};    //эта конструкция оставит app пр�
  * свойства.
  */
 app.Plotter = function (self) {
-    var
-    p = Plotter.prototype,     //Эта переменная нужна для небольшого сокращения названий методов ниже
+    var p = Plotter.prototype,     //Эта переменная нужна для небольшого сокращения названий методов ниже
     defaults = {
         width: 800,
         height: 600,
@@ -288,6 +287,18 @@ app.Plotter = function (self) {
             func.element
                 .attr("d", func.path(func.points));
         }
+
+        (function order() {
+            self.graphPlace.each(function () {
+                this.parentNode.insertBefore(this);
+            });
+
+            self.points.forEach(function (e) {
+                e.element.each(function () {
+                    this.parentNode.insertBefore(this);
+                })
+            });
+        })();
      };
 
     function findElement(n, arr) {
