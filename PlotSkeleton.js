@@ -286,7 +286,7 @@ app.Plotter = function (self) {
         for (i = 0; i < length; i += 1) {
             func = self.functions[i];
             func.element
-                .attr("d", func.path(func.points));
+                .attr("d", func.getPath());
         }
 
         (function order() {
@@ -538,14 +538,10 @@ app.Plotter = function (self) {
             _.func = func;
 
             function getRl() {
-                var rl = Math.max(self.x.domain()[0], rangeLeft ? rangeLeft : Number.NEGATIVE_INFINITY);
-                rl *= defaults.magicDrawingRange;
-                return rl;
+                return typeof rangeLeft === "undefined" ? self.x.domain()[0] : rangeLeft;
             }
             function getRr() {
-                var rr = Math.min(self.x.domain()[1], rangeRight ? rangeRight : Number.POSITIVE_INFINITY);
-                rr *= defaults.magicDrawingRange;
-                return rr;
+                return typeof rangeRight === "undefined" ? self.x.domain()[1] : rangeRight;
             }
 
             getter = function () {
@@ -574,12 +570,14 @@ app.Plotter = function (self) {
                 return _.path(_.points);
             }
 
+            _.getPath = getPath;
             return {
                 getFunc: getFunc,
                 getPoints: getter,
                 getRangeLeft: function () { return rangeLeft; },
                 getRangeRight: function () { return rangeRight; },
-                getNumber: getNumber
+                getNumber: getNumber,
+                getPath: getPath
             }
         };
         p.removeFunc = function (funcNumber) {
@@ -613,7 +611,7 @@ app.Plotter = function (self) {
                 }
                 if (axe === "y") {
                     points.unshift([0, o.func(rangeLeft)]);
-                    points.shift([0, o.func(rangeRight)]);
+                    points.push([0, o.func(rangeRight)]);
                 }
 
                 return points;
