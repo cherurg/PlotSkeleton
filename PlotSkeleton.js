@@ -309,6 +309,7 @@ app.Plotter = function (self) {
         return o ? o : false;
     }
     function removeElement(n, arr, name) {
+        n = n.getNumber ? n.getNumber() : n;
         var o = findElement(n, arr);
         if (!o) {
             console.log("Нет " + name + " с номером " + n);
@@ -506,35 +507,11 @@ app.Plotter = function (self) {
     (function Func() {
         var number = 0;
         p.addFunc = function (func, rangeLeft, rangeRight) {
-            var i, step, x, y, d3line,
-                _rangeLeft = Math.max(self.x.domain()[0], rangeLeft ? rangeLeft : Number.NEGATIVE_INFINITY),
-                _rangeRight = Math.min(self.x.domain()[1], rangeRight ? rangeRight : Number.POSITIVE_INFINITY),
-                points = [],
-                length = defaults.graphAccuracy,
-                _ = {};
+            var _ = {};
 
             _.number = number++;
             _.func = func;
-
-            _rangeLeft *= defaults.magicDrawingRange;
-            _rangeRight *= defaults.magicDrawingRange;
-            step = (_rangeRight - _rangeLeft)/length;
-            x = _rangeLeft;
-            for (i = 0; i < length; i += 1) {
-                y = func(x);
-                points.push([x, y]);
-                x += step;
-            }
-            _.points = points;
-
-            d3line = d3.svg.line()
-                .x(function (d) {
-                    return self.x(d[0]);
-                })
-                .y(function (d) {
-                    return self.y(d[1]);
-                });
-
+            getPoints();
             _.element = self.graphPlace
                 .append("path")
                 .attr("fill", "none")
@@ -543,30 +520,82 @@ app.Plotter = function (self) {
                 .attr("class", function () {
                     return "function num" + _.number;
                 })
-                .attr("d", d3line(points));
-            _.path = d3line;
-
+                .attr("d", getPath());
             self.functions.push(_);
 
             function getFunc() {
                 return _.func;
             }
             function getPoints() {
-                return _.points;
+                var points = [], step, x, y, i,
+                    length = defaults.graphAccuracy,
+                    _rangeLeft = Math.max(self.x.domain()[0], rangeLeft ? rangeLeft : Number.NEGATIVE_INFINITY),
+                    _rangeRight = Math.min(self.x.domain()[1], rangeRight ? rangeRight : Number.POSITIVE_INFINITY);
+
+                _rangeLeft *= defaults.magicDrawingRange;
+                _rangeRight *= defaults.magicDrawingRange;
+                step = (_rangeRight - _rangeLeft)/length;
+                x = _rangeLeft;
+                for (i = 0; i < length; i += 1) {
+                    y = func(x);
+                    points.push([x, y]);
+                    x += step;
+                }
+
+                _.points = points;
+                _.path = d3.svg.line()
+                    .x(function (d) {
+                        return self.x(d[0]);
+                    })
+                    .y(function (d) {
+                        return self.y(d[1]);
+                    });
+
+                return points;
             }
             function getNumber() {
                 return _.number;
+            }
+            function getPath() {
+                getPoints();
+                return _.path(_.points);
             }
 
             return {
                 getFunc: getFunc,
                 getPoints: getPoints,
+                getRangeLeft: function () { return rangeLeft; },
+                getRangeRight: function () { return rangeRight; },
                 getNumber: getNumber
             }
         };
         p.removeFunc = function (funcNumber) {
             return removeElement(funcNumber, self.functions, "function");
         };
+    })();
+    (function Area() {
+        var number = 0;
+        p.addGraphArea = function (funcNumber, rangeLeft, rangeRight, axe, options) {
+            var n = funcNumber,
+                graphAreaElement, f, func, site, sites = [];
+
+            n = n.getNumber ? n.getNumber() : n;
+            if (axe !== "x" && axe !== "y") {
+                console.log("Добавление прощади: значение переменной axe может быть только \"x\" или \"y\". " +
+                "Полученное значение: axe = " + axe);
+                return false;
+            }
+
+            f = self.functions[n];
+            func = f.func;
+
+            if (axe === "x") {
+                sites.push({x: rangeLeft, y: 0});
+            }
+        };
+        p.removeGraphArea = function (graphAreaNumber) {
+            return removeElement(graphAreaNumber, self.graphAreas, "graphArea");
+        }
     })();
 
     Plotter.getDefaults = function () {
