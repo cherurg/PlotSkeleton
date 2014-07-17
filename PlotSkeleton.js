@@ -527,16 +527,15 @@ app.Plotter = function (self) {
                 return _.func;
             }
             function getPoints() {
-                var points = [], step, x, y, i,
-                    length = defaults.graphAccuracy,
+                var points = [], step, x, y,
                     _rangeLeft = Math.max(self.x.domain()[0], rangeLeft ? rangeLeft : Number.NEGATIVE_INFINITY),
                     _rangeRight = Math.min(self.x.domain()[1], rangeRight ? rangeRight : Number.POSITIVE_INFINITY);
 
                 _rangeLeft *= defaults.magicDrawingRange;
                 _rangeRight *= defaults.magicDrawingRange;
-                step = (_rangeRight - _rangeLeft)/length;
+                step = (self.x.domain()[1] - self.x.domain()[0])/defaults.graphAccuracy;
                 x = _rangeLeft;
-                for (i = 0; i < length; i += 1) {
+                while (x <= _rangeRight) {
                     y = func(x);
                     points.push([x, y]);
                     x += step;
@@ -577,7 +576,8 @@ app.Plotter = function (self) {
         var number = 0;
         p.addGraphArea = function (funcNumber, rangeLeft, rangeRight, axe, options) {
             var n = funcNumber,
-                graphAreaElement, f, func, site, sites = [];
+                length = defaults.graphAccuracy,
+                graphAreaElement, f, func, site, sites = [], step, x, y;
 
             n = n.getNumber ? n.getNumber() : n;
             if (axe !== "x" && axe !== "y") {
@@ -589,8 +589,10 @@ app.Plotter = function (self) {
             f = self.functions[n];
             func = f.func;
 
+          //  step =
             if (axe === "x") {
                 sites.push({x: rangeLeft, y: 0});
+
             }
         };
         p.removeGraphArea = function (graphAreaNumber) {
