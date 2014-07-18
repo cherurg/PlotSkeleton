@@ -8,6 +8,7 @@ var app = app || {};    //эта конструкция оставит app пр�
 app.Plotter = function (self) {
     var p = Plotter.prototype,     //Эта переменная нужна для небольшого сокращения названий методов ниже
     defaults = {
+        magicFunctionTop: 100000,
         width: 800,
         height: 600,
         planeBorder: [-10, 10, -5, 5],
@@ -551,32 +552,12 @@ app.Plotter = function (self) {
             _.number = number++;
             _.realFunc = func;
             _.func = function (x) {
-                var y = func(x),
-                    arr,
-                    av = (self.y.domain()[1] + self.y.domain()[0])/2;
+                var y = func(x);
 
-                //здесь я баловался с функциональной парадигмой js.
-                //это можно было бы сделать проще, конечно. Мне хотелось написать что-то модное.
-                //здесь происходит ограничение функции, если она выходит сильно за пределы окна графика
-                //если svg path попытается нарисовать путь со слишком большим числом, то может вылететь ошибка
-                //поэтому я намеренно ограничиниваю высоту прорисовки относительно окна.
-                //сначала я центрирую отрезок, потом растягиваю его, потом возвращаю обратно.
-                //потом рисую только те точки, которые за него не выходят. А если выходят, то возвращаю значение, равное
-                //границе растянутого отрезка
-                function ave(el) {
-                    return el - av;
-                }
-                arr = self.y.domain().map(ave);
-                arr = arr.map(function (el) {
-                    return el*defaults.magicDrawingRange;
-                });
-                av *= -1;
-                arr = arr.map(ave);
-
-                if (y > arr[0]) {
-                    return arr[0];
-                } else if (y < arr[1]) {
-                    return arr[1];
+                if (y > defaults.magicFunctionTop) {
+                    return defaults.magicFunctionTop;
+                } else if (y < -defaults.magicFunctionTop) {
+                    return -defaults.magicFunctionTop;
                 }
 
                 return y;
@@ -597,7 +578,7 @@ app.Plotter = function (self) {
                 .append("path")
                 .attr("fill", "none")
                 .attr("stroke-width", 2)
-                .attr("stroke", "#000000")
+                .attr("stroke", "#1f77b4")
                 .attr("class", function () {
                     return "function num" + _.number;
                 })
@@ -663,8 +644,14 @@ app.Plotter = function (self) {
             };
             o.element = self.graphPlace
                 .append("path")
-                .attr("stroke-width", 2)
-                .attr("stroke", "#000000")
+                .attr("stroke-width", 0)
+                .attr("fill", function () {
+                    if (o.axe === "y") {
+                        return "#9467bd";
+                    } else {
+                        return "#17becf";
+                    }
+                })
                 .attr("opacity", 0.2)
                 .attr("class", function () {
                     return "graphArea num" + o.number;

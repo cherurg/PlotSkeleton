@@ -15,9 +15,9 @@
         setTimeout(function () {
             line.setX1(-2);
             plot.removeFunc(func1.getNumber());
+            area2.setRangeRight(3.7);
             plot.redraw();
             plot.removeGraphArea(area);
-            area2.setRangeRight(3.5);
         }, 2000);
         plot.removeLine(line2.getNumber());
         console.log("point2 number: " + point2.getNumber());
@@ -32,7 +32,8 @@
         var func3 = plot.addFunc(Math.sin, -20, 20);
 
         var area = plot.addGraphArea(func2, 0, 1, "x");
-        var area2 = plot.addGraphArea(func3, 3.3, 3.4, "y");
+        var area2 = plot.addGraphArea(func3, 3.3, 3.5, "y");
+        var area3 = plot.addGraphArea(func3, 3.3, 3.5, "x");
     }
 
     function test2() {
