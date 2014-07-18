@@ -545,7 +545,38 @@ app.Plotter = function (self) {
                 getter;
 
             _.number = number++;
-            _.func = func;
+            _.realFunc = func;
+            _.func = function (x) {
+                var y = func(x),
+                    arr,
+                    av = (self.y.domain()[1] + self.y.domain()[0])/2;
+
+                //здесь я баловался с функциональной парадигмой js.
+                //это можно было бы сделать проще, конечно. Мне хотелось написать что-то модное.
+                //здесь происходит ограничение функции, если она выходит сильно за пределы окна графика
+                //если svg path попытается нарисовать путь со слишком большим числом, то может вылететь ошибка
+                //поэтому я намеренно ограничиниваю высоту прорисовки относительно окна.
+                //сначала я центрирую отрезок, потом растягиваю его, потом возвращаю обратно.
+                //потом рисую только те точки, которые за него не выходят. А если выходят, то возвращаю значение, равное
+                //границе растянутого отрезка
+                function ave(el) {
+                    return el - av;
+                }
+                arr = self.y.domain().map(ave);
+                arr = arr.map(function (el) {
+                    return el*defaults.magicDrawingRange;
+                });
+                av *= -1;
+                arr = arr.map(ave);
+
+                if (y > arr[0]) {
+                    return arr[0];
+                } else if (y < arr[1]) {
+                    return arr[1];
+                }
+
+                return y;
+            };
 
             function getRl() {
                 return typeof rangeLeft === "undefined" ? self.x.domain()[0] : rangeLeft;
