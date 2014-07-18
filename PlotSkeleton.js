@@ -246,28 +246,7 @@ app.Plotter = function (self) {
         var i, length = self.points.length, point;
         for (i = 0; i < length; i += 1) {
             point = self.points[i];
-            point.element
-                .attr("cx", self.x(point.x))
-                .attr("cy", self.y(point.y));
-            if (point.movable) {
-                (function (point) {
-                    point.element
-                        .call(d3.behavior.drag()
-                            .on("drag", function () {
-                                var cx = point.element.attr("cx"),
-                                    cy = point.element.attr("cy"),
-                                    dx = d3.event.dx,
-                                    dy = d3.event.dy;
-
-                                point.element
-                                    .attr("cx", +cx + dx)
-                                    .attr("cy", +cy + dy);
-
-                                point.x = self.x.invert(point.element.attr("cx"));
-                                point.y = self.y.invert(point.element.attr("cy"));
-                            }));
-                })(point);
-            }
+            point.update();
         }
 
         length = self.lines.length;
@@ -281,14 +260,6 @@ app.Plotter = function (self) {
                 .attr("y2", self.y(line.y2));
         }
 
-/*        length = self.functions.length;
-        var func;
-        for (i = 0; i < length; i += 1) {
-            func = self.functions[i];
-            func.element
-                .attr("d", func.getPath());
-        }*/
-
         self.functions.forEach(function (func) {
             func.element
                 .attr("d", func.getPath());
@@ -301,12 +272,12 @@ app.Plotter = function (self) {
 
         (function order() {
             self.graphPlace.each(function () {
-                this.parentNode.insertBefore(this);
+                this.parentNode.appendChild(this);
             });
 
             self.points.forEach(function (e) {
                 e.element.each(function () {
-                    this.parentNode.insertBefore(this);
+                    this.parentNode.appendChild(this);
                 })
             });
         })();
@@ -337,11 +308,7 @@ app.Plotter = function (self) {
                     .append("circle")
                     .attr("class", function () {
                         return "point num" + number;
-                    })
-                    .attr("cx", self.x(x))
-                    .attr("cy", self.y(y))
-                    .attr("r", defaults.pointRadius)
-                    .attr("fill", "red"),
+                    }),
                 point = {
                     x: x,
                     y: y,
@@ -349,10 +316,36 @@ app.Plotter = function (self) {
                     number: number++,
                     element: pointElement
                 };
-            if (options && options.movable === true) {
-                point.movable = true;
+            if (options) {
+                if (options.movable === true) {
+                    point.movable = true;
+                }
+                if (options.small === true) {
+                    point.small = true;
+                }
             }
+            point.update = update;
             this.points.push(point);
+            if (point.movable) {
+                (function (point) {
+                    point.element
+                        .call(d3.behavior.drag()
+                            .on("drag", function () {
+                                var cx = point.element.attr("cx"),
+                                    cy = point.element.attr("cy"),
+                                    dx = d3.event.dx,
+                                    dy = d3.event.dy;
+
+                                point.element
+                                    .attr("cx", +cx + dx)
+                                    .attr("cy", +cy + dy);
+
+                                point.x = self.x.invert(point.element.attr("cx"));
+                                point.y = self.y.invert(point.element.attr("cy"));
+                            }));
+                })(point);
+            }
+            update();
             self.redraw();
 
             function getX() {
@@ -380,6 +373,16 @@ app.Plotter = function (self) {
             function getNumber() {
                 return point.number;
             }
+            function update() {
+                pointElement
+                    .attr("cx", self.x(point.x))
+                    .attr("cy", self.y(point.y))
+                    .attr("r", function () {
+                        var r = defaults.pointRadius;
+                        return point.small ? r/1.5 : r;
+                    })
+                    .attr("fill", "red");
+            }
 
             return {
                 getNumber: getNumber,
@@ -388,7 +391,8 @@ app.Plotter = function (self) {
                 setX: setX,
 
                 getY: getY,
-                setY: setY
+                setY: setY,
+                update: update
             };
         };
         p.removePoint = function (pointNumber) {

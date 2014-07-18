@@ -37,15 +37,15 @@
 
     function test2() {
         var t = 0;
-        var point = plot.addPoint(Math.cos(t), Math.sin(t));
+        var point = plot.addPoint(Math.cos(t), Math.sin(t), {small: true});
         setInterval(function () {
             t += 0.1;
             point.setX(Math.cos(t));
             point.setY(Math.sin(t));
-            plot.redraw();
+            point.update();
         }, 40);
     }
 
     test1();
-    test2();
+    //test2();
 })();
