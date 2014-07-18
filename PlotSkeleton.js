@@ -318,8 +318,8 @@ app.Plotter = function (self) {
                     element: pointElement
                 };
             if (options) {
-                if (options.movable === true) {
-                    point.movable = true;
+                if (options.movable) {
+                    point.movable = options.movable;
                 }
                 if (options.small === true) {
                     point.small = true;
@@ -327,7 +327,7 @@ app.Plotter = function (self) {
             }
             point.update = update;
             this.points.push(point);
-            if (point.movable) {
+            if (point.movable === true) {
                 (function (point) {
                     point.element
                         .call(d3.behavior.drag()
@@ -345,6 +345,23 @@ app.Plotter = function (self) {
                                 point.y = self.y.invert(point.element.attr("cy"));
                             }));
                 })(point);
+            } else if (point.movable &&
+                point.movable.getNearestPoint) {
+
+                point.element
+                    .call(d3.behavior.drag()
+                        .on("drag", function () {
+                            var newX = self.x.invert(d3.event.x),
+                                newY = self.y.invert(d3.event.y),
+                                p = point.movable.getNearestPoint({x: newX, y: newY});
+
+                            point.element
+                                .attr("cx", self.x(+p.x))
+                                .attr("cy", self.y(+p.y));
+
+                            point.x = +p.x;
+                            point.y = +p.y;
+                        }));
             }
             update();
             self.redraw();
@@ -419,6 +436,7 @@ app.Plotter = function (self) {
             line.y1 = y1;
             line.y2 = y2;
             line.number = number++;
+            line.lineLength = euc(x1, y1, x2, y2);
 
             line.element = self.graphPlace
                 .append("line")
@@ -495,6 +513,39 @@ app.Plotter = function (self) {
             function getFunc() {
                 return line.func;
             }
+            function euc(x1, y1, x2, y2) {
+                return Math.sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
+            }
+            function getNearestPoint(point) {
+                var xStar = point.x,
+                    yStar = point.y,
+                    k = line.k,
+                    b = line.y1 - k*line.x1,
+                    x = (yStar*k + xStar - k*b)/(k*k + 1),
+                    y = k*x + b,
+                    lineLength = line.lineLength,
+                    euc1 = euc(x, y, line.x1, line.y1),
+                    euc2 = euc(x, y, line.x2, line.y2);
+
+                if (euc1 + euc2 > lineLength) {
+                    if (euc1 < euc2) {
+                        return {
+                            x: line.x1,
+                            y: line.y1
+                        }
+                    } else {
+                        return {
+                            x: line.x2,
+                            y: line.y2
+                        }
+                    }
+                }
+
+                return {
+                    x: x,
+                    y: y
+                }
+            }
 
             return {
                 getX1: getX1,
@@ -506,7 +557,8 @@ app.Plotter = function (self) {
                 getY2: getY2,
                 setY2: setY2,
                 getNumber: getNumber,
-                getFunc: getFunc
+                getFunc: getFunc,
+                getNearestPoint: getNearestPoint
             }
         };
 

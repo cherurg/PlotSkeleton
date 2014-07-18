@@ -47,6 +47,12 @@
         }, 40);
     }
 
-    test1();
+    function test3() {
+        var line = plot.addLine(0, 0, 2, 2);
+        var point = plot.addPoint(1, 1, {movable: line});
+    }
+
+    //test1();
     //test2();
+    test3();
 })();
