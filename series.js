@@ -1,6 +1,6 @@
 (function () {
-    app.Plotter1 = app.Plotter({});
-    var plot = new app.Plotter1("graph", {planeBorder: [-5, 5, -5, 5]});
+    //app.Plotter1 = app.Plotter({});
+    var plot = Plotter("graph", {planeBorder: [-5, 5, -5, 5]});
 
     function test1() {
 

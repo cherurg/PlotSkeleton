@@ -791,3 +791,8 @@ app.Plotter = function (self) {
 
     return Plotter;
 };
+
+function Plotter(elementID, options) {
+    var c = app.Plotter({});
+    return new c(elementID, options);
+}
