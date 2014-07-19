@@ -12,7 +12,7 @@
 
         var line = plot.addLine(0, 0, 1, 1);
         var line2 = plot.addLine(-1, -1, 4, 3);
-        setTimeout(function () {
+        plot.setTimeout(function () {
             line.setX1(-2);
             plot.removeFunc(func1.getNumber());
             area2.setRangeRight(3.7);
@@ -39,7 +39,7 @@
     function test2() {
         var t = 0;
         var point = plot.addPoint(Math.cos(t), Math.sin(t), {small: true});
-        setInterval(function () {
+        plot.setInterval(function () {
             t += 0.1;
             point.setX(Math.cos(t));
             point.setY(Math.sin(t));
@@ -52,7 +52,7 @@
         var point = plot.addPoint(1, 1, {movable: line});
     }
 
-    //test1();
-    //test2();
-    test3();
+    test1();
+    test2();
+    //test3();
 })();

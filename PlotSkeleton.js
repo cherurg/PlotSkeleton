@@ -794,5 +794,8 @@ app.Plotter = function (self) {
 
 function Plotter(elementID, options) {
     var c = app.Plotter({});
-    return new c(elementID, options);
+    c = new c(elementID, options);
+    c.setTimeout = function (cb, time) { return setTimeout(cb, time); };
+    c.setInterval = function (cb, time) { return setInterval(cb, time); };
+    return c;
 }
