@@ -1,6 +1,6 @@
-(function () {
+(function (id) {
     //app.Plotter1 = app.Plotter({});
-    var plot = Plotter("graph", {planeBorder: [-5, 5, -5, 5]});
+    var plot = Plotter(id, {planeBorder: [-5, 5, -5, 5]});
 
     function test1() {
 
@@ -52,7 +52,19 @@
         var point = plot.addPoint(1, 1, {movable: line});
     }
 
+    function test4() {
+        var controls = new app.Controls("controls");
+        controls.addButton(function () {
+            alert("hello, world!");
+        }, "hello?");
+
+        controls.addRange(function (value) {
+            console.log(value);
+        }, "Ползунок:", 0, 10, 0.01, 0);
+    }
+
     test1();
     test2();
-    //test3();
-})();
+    test3();
+    test4();
+})("graph");

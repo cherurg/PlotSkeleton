@@ -597,7 +597,7 @@ app.Plotter = function (self) {
     }
     (function Func() {
         var number = 0;
-        p.addFunc = function (func, rangeLeft, rangeRight) {
+        p.addFunc = function (func, rangeLeft, rangeRight, options) {
             var _ = {},
                 getter;
 
