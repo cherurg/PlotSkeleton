@@ -49,7 +49,7 @@
 
     function test3() {
         var line = plot.addLine(0, 0, 2, 2);
-        var point = plot.addPoint(1, 1, {movable: line});
+        var point = plot.addPoint(1, 1, { movable: line });
     }
 
     function test4() {

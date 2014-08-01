@@ -364,7 +364,7 @@ app.Plotter = function (self) {
                         }));
             }
             update();
-            self.redraw();
+            //self.redraw();
 
             function getX() {
                 return point.x;
