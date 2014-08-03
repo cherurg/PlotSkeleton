@@ -22,6 +22,41 @@ app.Controls.prototype.addButton = function (callback, text) {
     });
 };
 
+app.Controls.prototype._initInput = function () {
+    this.input = document.createElement("input");
+
+    this.elem.appendChild(this.input);
+};
+
+app.Controls.prototype.addCheckbox = function (oncheckedCb, onuncheckedCb, isChecked, text) {
+
+    if (!this.input) {
+       // this._initInput();
+    }
+
+    var checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
+
+    checkbox.checked = isChecked;
+
+    function callback () {
+        if (this.checked) {
+            oncheckedCb();
+        } else {
+            onuncheckedCb();
+        }
+    }
+
+    checkbox.addEventListener("change", callback);
+
+    this.elem.appendChild(checkbox);
+
+    var p = document.createElement("p");
+    p.innerHTML = text;
+
+    this.elem.appendChild(p);
+};
+
 app.Controls.prototype.addRange = function (callback, text, left, right, step, value) {
     var div = document.createElement("div"),
         t = document.createElement("p"),

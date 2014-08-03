@@ -81,9 +81,28 @@
         }, 2000);
     }
 
+    function test6() {
+        var controls = new app.Controls("controls");
+        controls.addCheckbox(function () {
+            alert("checked");
+        }, function () {
+            alert("unchecked");
+        },
+        false,
+        "hello");
+
+        controls.addButton(function () {
+            alert("hello, world!");
+        }, "hello?");
+    }
+
     //test1();
-  //  test2();
+    //test2();
     //test3();
     //test4();
-    test5();
+    //test5();
+
+    test6();
+
+
 })("graph");
