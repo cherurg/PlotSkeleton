@@ -14,6 +14,7 @@
         var line2 = plot.addLine(-1, -1, 4, 3);
         plot.setTimeout(function () {
             line.setX1(-2);
+            line.setY1(-3);
             plot.removeFunc(func1.getNumber());
             area2.setRangeRight(3.7);
             plot.redraw();
@@ -63,8 +64,26 @@
         }, "Ползунок:", 0, 10, 0.01, 0);
     }
 
-    test1();
-    test2();
-    test3();
-    test4();
+    function test5() {
+        var line = plot.addLine(0, 0, 1, 2);
+        var func = plot.addFunc(Math.cos, -20, 20);
+        var areaX = plot.addGraphArea(func, 3.3, 3.5, "x");
+        var areaY = plot.addGraphArea(func, 3.3, 3.5, "y");
+
+        setTimeout(function () {
+            line.setY1(5);
+            line.setY2(-5);
+
+            areaX.setRangeRight(3.7);
+            areaY.setRangeRight(3.7);
+
+            plot.redraw();
+        }, 2000);
+    }
+
+    //test1();
+  //  test2();
+    //test3();
+    //test4();
+    test5();
 })("graph");
