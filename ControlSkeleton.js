@@ -70,7 +70,7 @@ app.Controls.prototype.addRange = function (callback, text, left, right, step, v
     range.setAttribute("step", step);
     range.setAttribute("value", value);
     range.addEventListener("input", function () {
-        var value = range.value;
+        var value = +range.value;
         callback(value);
     });
 
