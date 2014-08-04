@@ -18,7 +18,12 @@ app.Plotter = function (self) {
             right: 30
         },
         magicDrawingRange: 1.2,
-        pointRadius: 5,
+        pointRadius: {
+            large: 5,
+            medium: 3,
+            small: 2,
+            tiny: 1.5
+        },
         graphAccuracy: 300
     },
     arrayNamesToInit = [
@@ -321,8 +326,8 @@ app.Plotter = function (self) {
                 if (options.movable) {
                     point.movable = options.movable;
                 }
-                if (options.small === true) {
-                    point.small = true;
+                if (options.size) {
+                    point.size = options.size;
                 }
             }
             point.update = update;
@@ -396,8 +401,8 @@ app.Plotter = function (self) {
                     .attr("cx", self.x(point.x))
                     .attr("cy", self.y(point.y))
                     .attr("r", function () {
-                        var r = defaults.pointRadius;
-                        return point.small ? r/1.5 : r;
+                        point.size = point.size || "medium";
+                        return defaults.pointRadius[point.size];
                     })
                     .attr("fill", "red");
             }
