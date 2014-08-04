@@ -28,7 +28,9 @@
         console.log("badLine number: " + badLine.getNumber());
 
         var func1 = plot.addFunc(Math.cos);
-        var func2 = plot.addFunc(function (x) { return x*x; });
+        var func2 = plot.addFunc(function (x) {
+            return x * x;
+        });
 
         var func3 = plot.addFunc(Math.sin, -20, 20);
 
@@ -84,25 +86,34 @@
     function test6() {
         var controls = new app.Controls("controls");
         controls.addCheckbox(function () {
-            alert("checked");
-        }, function () {
-            alert("unchecked");
-        },
-        false,
-        "hello");
+                alert("checked");
+            }, function () {
+                alert("unchecked");
+            },
+            false,
+            "hello");
 
         controls.addButton(function () {
             alert("hello, world!");
         }, "hello?");
     }
 
+    function test7() {
+        plot.addPoint(1, 1, {
+            onclick: function () {
+                alert("hello");
+            }
+        });
+    }
+
     //test1();
-    test2();
+    //test2();
     //test3();
     //test4();
     //test5();
 
     //test6();
 
+    test7();
 
 })("graph");

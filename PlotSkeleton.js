@@ -329,6 +329,9 @@ app.Plotter = function (self) {
                 if (options.size) {
                     point.size = options.size;
                 }
+                if (options.onclick) {
+                    point.onclick = options.onclick;
+                }
             }
             point.update = update;
             this.points.push(point);
@@ -368,6 +371,11 @@ app.Plotter = function (self) {
                             point.y = +p.y;
                         }));
             }
+
+            if (point.onclick) {
+                point.element.on("click", point.onclick);
+            }
+
             update();
             //self.redraw();
 
