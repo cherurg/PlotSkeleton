@@ -24,7 +24,18 @@ app.Plotter = function (self) {
             small: 2,
             tiny: 1.5
         },
-        graphAccuracy: 300
+        graphAccuracy: 300,
+        colors: (function () {
+            var c = d3.scale.category10();
+            c.domain();
+
+            var arr = [], i;
+            for (i = 0; i < 10; i += 1) {
+                arr.push(c(i));
+            }
+
+            return arr;
+        })()
     },
     arrayNamesToInit = [
         "points",
@@ -320,7 +331,8 @@ app.Plotter = function (self) {
                     y: y,
                     options: options,
                     number: number++,
-                    element: pointElement
+                    element: pointElement,
+                    color: 3
                 };
             if (options) {
                 if (options.movable) {
@@ -331,6 +343,9 @@ app.Plotter = function (self) {
                 }
                 if (options.onclick) {
                     point.onclick = options.onclick;
+                }
+                if (options.color) {
+                    point.color = d3.scale.category10()(options.color);
                 }
             }
             point.update = update;
@@ -412,8 +427,10 @@ app.Plotter = function (self) {
                         point.size = point.size || "medium";
                         return defaults.pointRadius[point.size];
                     })
-                    .attr("fill", "red");
+                    .attr("fill", defaults.colors[point.color]);
             }
+
+            update();
 
             return {
                 getNumber: getNumber,
