@@ -33,7 +33,7 @@ app.Plotter = function (self) {
             for (i = 0; i < 10; i += 1) {
                 arr.push(c(i));
             }
-
+            arr.push("#000000");
             return arr;
         })()
     },
@@ -95,6 +95,11 @@ app.Plotter = function (self) {
         console.log(this.toString());
 
         this.initialized = false;
+/*        if (typeof options.wheel !== 'undefined') {
+            this.wheel = options.wheel;
+        } else {
+            this.wheel = true;
+        }*/
         this.redraw();
     }
 
@@ -198,6 +203,11 @@ app.Plotter = function (self) {
         var gx, fx, fy, gxe, gy, gye, xTicks, yTicks,
             g = self.plot,
             zoom = d3.behavior.zoom().x(self.x).y(self.y).on("zoom", self.redraw);
+
+/*        if (self.wheel === false) {
+            self.plot
+                .on("dblclick", null);
+        }*/
 
 
         fx = self.x.tickFormat(self.plotTicks);
@@ -345,7 +355,7 @@ app.Plotter = function (self) {
                     point.onclick = options.onclick;
                 }
                 if (options.color) {
-                    point.color = d3.scale.category10()(options.color);
+                    point.color = options.color;
                 }
             }
             point.update = update;
@@ -467,6 +477,13 @@ app.Plotter = function (self) {
             line.y2 = y2;
             line.number = number++;
             line.lineLength = euc(x1, y1, x2, y2);
+            if (options) {
+                line.color = options.color;
+                line.width = options.width;
+            } else {
+                line.color = 10;
+                line.width = 2;
+            }
 
             line.element = self.graphPlace
                 .append("line")
@@ -477,7 +494,7 @@ app.Plotter = function (self) {
                 .attr("x2", self.x(x2))
                 .attr("y1", self.y(y1))
                 .attr("y2", self.y(y2))
-                .attr("style", "stroke:rgb(0,0,0);stroke-width:2");
+                .attr("style", "stroke:" + defaults.colors[line.color] + ";stroke-width:" + line.width);
 
             if (options && options.tornLeft === true) {
                 line.tornLeft = true;

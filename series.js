@@ -11,7 +11,7 @@
         plot.removePoint(point.getNumber());
 
         var line = plot.addLine(0, 0, 1, 1);
-        var line2 = plot.addLine(-1, -1, 4, 3);
+        var line2 = plot.addLine(-1, -1, 4, 3, { color: 5, width: 10 });
         plot.setTimeout(function () {
             line.setX1(-2);
             line.setY1(-3);
@@ -20,7 +20,7 @@
             plot.redraw();
             plot.removeGraphArea(area);
         }, 2000);
-        plot.removeLine(line2.getNumber());
+        //plot.removeLine(line2.getNumber());
         console.log("point2 number: " + point2.getNumber());
         //plot.removeLine(line.getNumber());
 
@@ -106,14 +106,12 @@
         });
     }
 
-    //test1();
+    test1();
     //test2();
     //test3();
     //test4();
     //test5();
-
     //test6();
-
-    test7();
+   // test7();
 
 })("graph");
