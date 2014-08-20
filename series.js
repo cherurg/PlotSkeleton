@@ -106,12 +106,26 @@
         });
     }
 
-    test1();
+    function test8() {
+        var controls = new app.Controls("controls");
+
+        var func = plot.addFunc(Math.sin);
+
+        controls.addRange(function (value) {
+            plot.removeFunc(func);
+            func = plot.addFunc(function(x) {
+                return Math.sin(x)*value;
+            });
+        }, "Ползунок:", 0, 10, 0.01, 1);
+    }
+
+    //test1();
     //test2();
     //test3();
-    //test4();
+   // test4();
     //test5();
     //test6();
    // test7();
+    test8();
 
 })("graph");
