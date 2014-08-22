@@ -1,6 +1,8 @@
-(function (id) {
+(function (id, id2) {
     //app.Plotter1 = app.Plotter({});
     var plot = Plotter(id, {planeBorder: [-5, 5, -5, 5]});
+    //раскомментируйте эту строчку, если нужен второй график
+    //var plot2 = Plotter(id2);
 
     function test1() {
 
@@ -128,4 +130,4 @@
    // test7();
     test8();
 
-})("graph");
+})("graph", "new_graph");
