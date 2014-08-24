@@ -121,6 +121,10 @@
         }, "Ползунок:", 0, 10, 0.01, 1);
     }
 
+    function test9() {
+        var func = plot.addFunc(Math.sin, -10, 10, { color: 1, width: 10 });
+    }
+
     //test1();
     //test2();
     //test3();
@@ -128,6 +132,7 @@
     //test5();
     //test6();
    // test7();
-    test8();
+    //test8();
+    test9();
 
 })("graph", "new_graph");

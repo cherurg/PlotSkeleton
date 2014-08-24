@@ -648,6 +648,10 @@ app.Plotter = function (self) {
             var _ = {},
                 getter;
 
+            options = options || {};
+            _.width = options.width || 2;
+            _.color = options.color || 0;
+
             _.number = number++;
             _.realFunc = func;
             _.func = function (x) {
@@ -676,8 +680,8 @@ app.Plotter = function (self) {
             _.element = self.graphPlace
                 .append("path")
                 .attr("fill", "none")
-                .attr("stroke-width", 2)
-                .attr("stroke", "#1f77b4")
+                .attr("stroke-width", _.width)
+                .attr("stroke", defaults.colors[_.color])
                 .attr("class", function () {
                     return "function num" + _.number;
                 })
