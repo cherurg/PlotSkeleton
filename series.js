@@ -140,6 +140,8 @@
         var smartControl = controls.addRange(function (value) {
             smartControl.setText("Значение ползунка: " + value);
         }, "Значение ползунка: 0", 0, 10, 1, 0);
+
+        controls.addText("\\(x\\cdot y = 0\\)")
     }
 
     //test1();
