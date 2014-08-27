@@ -9,6 +9,7 @@ app.Controls = function (id) {
 
 app.Controls.prototype.addButton = function (callback, text) {
     var button = document.createElement("button");
+    button.setAttribute("class", "control");
     button.innerHTML = text;
     button.addEventListener("click", callback);
     var div = document.createElement("div");
@@ -20,6 +21,14 @@ app.Controls.prototype.addButton = function (callback, text) {
         number: this.buttonsNumber++,
         button: div
     });
+};
+
+app.Controls.prototype.addText = function (text) {
+    var textEl = document.createElement("span");
+    textEl.innerHTML = text;
+    textEl.setAttribute("class", "control");
+
+    this.elem.appendChild(textEl);
 };
 
 app.Controls.prototype._initInput = function () {
@@ -49,20 +58,25 @@ app.Controls.prototype.addCheckbox = function (oncheckedCb, onuncheckedCb, isChe
 
     checkbox.addEventListener("change", callback);
 
-    this.elem.appendChild(checkbox);
-
-    var p = document.createElement("p");
+    var p = document.createElement("span");
     p.innerHTML = text;
 
-    this.elem.appendChild(p);
+    var div = document.createElement("div");
+    div.setAttribute("class", "control");
+    div.appendChild(checkbox);
+    div.appendChild(p);
+
+    this.elem.appendChild(div);
 };
 
 app.Controls.prototype.addRange = function (callback, text, left, right, step, value) {
     var div = document.createElement("div"),
-        t = document.createElement("p"),
+        t = document.createElement("span"),
         range = document.createElement("input");
+    div.setAttribute("class", "control");
     t.innerHTML = text;
     div.appendChild(t);
+    div.appendChild(document.createElement("br"));
 
     range.setAttribute("type", "range");
     range.setAttribute("min", left);
@@ -83,5 +97,9 @@ app.Controls.prototype.addRange = function (callback, text, left, right, step, v
         range: div
     });
 
-    return div;
+    return {
+        setText: function (text) {
+            t.innerHTML = text;
+        }
+    }
 };

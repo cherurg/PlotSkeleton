@@ -7,3 +7,8 @@ svg g text {
 
     -webkit-user-select: none;
 }
+
+.control {
+    float: left;
+    margin-right: 15px;
+}

@@ -115,24 +115,42 @@
 
         controls.addRange(function (value) {
             plot.removeFunc(func);
-            func = plot.addFunc(function(x) {
-                return Math.sin(x)*value;
+            func = plot.addFunc(function (x) {
+                return Math.sin(x) * value;
             });
         }, "Ползунок:", 0, 10, 0.01, 1);
     }
 
     function test9() {
-        var func = plot.addFunc(Math.sin, -10, 10, { color: 1, width: 10 });
+        var func = plot.addFunc(function (x) {
+            return 3;
+        }, 1, 2, { color: 1, width: 1 });
+        var graphArea = plot.addGraphArea(func, 1, 2, "x");
+    }
+
+    function test10() {
+        var controls = new app.Controls("controls");
+
+        controls.addButton(function () {}, "hello");
+        controls.addRange(function () {}, "Привет!", 10, 12, 0.1, 11);
+        controls.addCheckbox(function () {}, function () {}, true, "checkbox");
+        controls.addText("Какой-то текст");
+        controls.addText("Какой-то другой текст");
+
+        var smartControl = controls.addRange(function (value) {
+            smartControl.setText("Значение ползунка: " + value);
+        }, "Значение ползунка: 0", 0, 10, 1, 0);
     }
 
     //test1();
     //test2();
     //test3();
-   // test4();
+    //test4();
     //test5();
     //test6();
-   // test7();
+    //test7();
     //test8();
-    test9();
+    //test9();
+    test10();
 
 })("graph", "new_graph");
