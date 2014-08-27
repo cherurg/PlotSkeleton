@@ -89,6 +89,11 @@ options пока не используется
 
 <b>removeGraphArea(grapharea)</b> - удаляет GraphArea.
 
+<b>addFigure(array, options)</b> - закрашивает произвольную область, возвращает figure. 
+array - массив. Каждый его элемент - массив из двух чисел. Первое - x, второе - y.
+options:
+color - число от 0 до 9.
+<b>removeFigure(figure)</b> - удаляет figure.
 
 Теперь что касается методов объектов.
 <b>Point.getNumber()</b> - возвращает номер точки. Уникальный идентификатор.
@@ -148,6 +153,8 @@ options пока не используется
 <b>Func.getNumber()</b>
 
 <b>Func.getPath()</b> - путь для элемента path svg-графики.
+
+<b>Figure.getPath()</b> - путь для элемента path svg-графики.
 
 
 
