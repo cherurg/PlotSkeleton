@@ -134,14 +134,15 @@
         controls.addButton(function () {}, "hello");
         controls.addRange(function () {}, "Привет!", 10, 12, 0.1, 11);
         controls.addCheckbox(function () {}, function () {}, true, "checkbox");
-        controls.addText("Какой-то текст");
-        controls.addText("Какой-то другой текст с переносом", {newLine: true});
 
-        var smartControl = controls.addRange(function (value) {
+        var plot2 = Plotter("new_graph");
+        var controls2 = new app.Controls("new_controls");
+        controls2.addText("Какой-то текст");
+        controls2.addText("Какой-то другой текст с переносом", {newLine: true});
+
+        var smartControl = controls2.addRange(function (value) {
             smartControl.setText("Значение ползунка: " + value);
         }, "Значение ползунка: 0", 0, 10, 1, 0);
-
-        controls.addText("\\(x\\cdot y = 0\\)")
     }
 
     function test11() {
