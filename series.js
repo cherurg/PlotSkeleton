@@ -144,6 +144,31 @@
         controls.addText("\\(x\\cdot y = 0\\)")
     }
 
+    function test11() {
+        var arr = [];
+        arr.push([0, 0]);
+        arr.push([1, 0]);
+        arr.push([1, 1]);
+        arr.push([0, 1]);
+
+        var arr1 = [];
+        arr1.push([1, 0]);
+        arr1.push([2, 0]);
+        arr1.push([2, 1]);
+
+
+        var rect = plot.addFigure(arr, {color: 2});
+        plot.addFigure(arr1, {color: 3});
+
+        setTimeout(function () {
+            plot.removeFigure(rect);
+            plot.redraw();
+        }, 3000);
+        setTimeout(function () {
+            plot.addFigure(arr);
+        }, 4000);
+    }
+
     //test1();
     //test2();
     //test3();
@@ -153,6 +178,7 @@
     //test7();
     //test8();
     //test9();
-    test10();
+    //test10();
+    test11();
 
 })("graph", "new_graph");

@@ -41,7 +41,8 @@ app.Plotter = function (self) {
         "points",
         "lines",
         "functions",
-        "graphAreas"
+        "graphAreas",
+        "figures"
     ];
 
     /**
@@ -295,6 +296,11 @@ app.Plotter = function (self) {
         self.graphAreas.forEach(function (graphArea) {
             graphArea.element
                 .attr("d", graphArea.getPath());
+        });
+
+        self.figures.forEach(function (figure) {
+            figure.element
+                .attr("d", figure.getPath());
         });
 
         (function order() {
@@ -797,6 +803,58 @@ app.Plotter = function (self) {
         p.removeGraphArea = function (graphAreaNumber) {
             return removeElement(graphAreaNumber, self.graphAreas, "graphArea");
         }
+    })();
+    (function Figure() {
+        var number = 0;
+
+        p.addFigure = function (pointsArray, options) {
+            options = options || {};
+            options.color = options.color || 0;
+
+            var o = {};
+
+            o.arr = pointsArray;
+            o.number = number++;
+            o.element = self.graphPlace
+                .append("path")
+                .attr("stroke-width", 0)
+                .attr("fill", defaults.colors[options.color])
+                .attr("opacity", 0.2)
+                .attr("class", function () {
+                    return "graphArea num" + o.number;
+                })
+                .attr("d", getPath());
+
+            self.figures.push(o);
+
+            function getNumber() {
+                return o.number;
+            }
+            function getNodes() {
+                return o.arr;
+            }
+            function getPath() {
+                var path = d3.svg.line()
+                    .x(function (d) {
+                        return self.x(d[0]);
+                    })
+                    .y(function (d) {
+                        return self.y(d[1]);
+                    });
+
+                return path(o.arr);
+            }
+            o.getPath = getPath;
+
+            return {
+                getNodes: getNodes,
+                getNumber: getNumber,
+                getPath: getPath
+            }
+        };
+        p.removeFigure = function (figureNumber) {
+            return removeElement(figureNumber, self.figures, "figure");
+        };
     })();
 
     Plotter.getDefaults = function () {
