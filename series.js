@@ -135,7 +135,7 @@
         controls.addRange(function () {}, "Привет!", 10, 12, 0.1, 11);
         controls.addCheckbox(function () {}, function () {}, true, "checkbox");
         controls.addText("Какой-то текст");
-        controls.addText("Какой-то другой текст");
+        controls.addText("Какой-то другой текст с переносом", {newLine: true});
 
         var smartControl = controls.addRange(function (value) {
             smartControl.setText("Значение ползунка: " + value);
@@ -178,7 +178,7 @@
     //test7();
     //test8();
     //test9();
-    //test10();
-    test11();
+    test10();
+    //test11();
 
 })("graph", "new_graph");

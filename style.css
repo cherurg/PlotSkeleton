@@ -12,3 +12,7 @@ svg g text {
     float: left;
     margin-right: 15px;
 }
+
+#controls td {
+    height: 70px;
+}

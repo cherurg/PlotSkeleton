@@ -1,10 +1,20 @@
 var app = app || {};
 
 app.Controls = function (id) {
-    this.elem = document.getElementById(id);
+    this.id = id;
+    this.table = document.createElement("table");
+    document.getElementById(id).appendChild(this.table);
+    this._newElem();
 
     this.buttonsNumber = 0;
     this.rangeNumber = 0;
+};
+
+app.Controls.prototype._newElem = function () {
+    this.elem = document.createElement("td");
+    var tr = document.createElement("tr");
+    tr.appendChild(this.elem);
+    this.table.appendChild(tr);
 };
 
 app.Controls.prototype.addButton = function (callback, text) {
@@ -23,11 +33,15 @@ app.Controls.prototype.addButton = function (callback, text) {
     });
 };
 
-app.Controls.prototype.addText = function (text) {
+app.Controls.prototype.addText = function (text, options) {
+    options = options || {};
     var textEl = document.createElement("span");
     textEl.innerHTML = text;
     textEl.setAttribute("class", "control");
 
+    if (options.newLine) {
+        this._newElem();
+    }
     this.elem.appendChild(textEl);
 };
 
