@@ -44,8 +44,11 @@
     function test2() {
         var t = 0;
         var point = plot.addPoint(Math.cos(t), Math.sin(t), {size: "tiny"});
-        plot.setInterval(function () {
+        var a = plot.setInterval(function () {
             t += 0.1;
+            if (t > 1) {
+                clearInterval(a);
+            }
             point.setX(Math.cos(t));
             point.setY(Math.sin(t));
             point.update();
@@ -171,7 +174,7 @@
     }
 
     //test1();
-    //test2();
+    test2();
     //test3();
     //test4();
     //test5();
@@ -179,7 +182,7 @@
     //test7();
     //test8();
     //test9();
-    test10();
+    //test10();
     //test11();
 
 })("graph", "new_graph");
