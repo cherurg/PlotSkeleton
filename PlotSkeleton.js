@@ -68,7 +68,7 @@ app.Plotter = function (self) {
         }
 
         options = options || {};
-        this.clc = options.click ? options.click : null;
+        this.clc = options.click ? options.click : function () {};
         //Если options существует, то не трогать его. Если он undefined, то присвоить options пустой объект.
         //Внутри цикла встречаются конструкции вроде this[field]. this - это объект, а field - имя поля, к которому
         // нужен доступ. Это второй из возможных способо обращения к полям объекта. Этот способ очень удобен в
@@ -321,6 +321,16 @@ app.Plotter = function (self) {
             });
         })();
      };
+
+    p.removeAll = function () {
+        arrayNamesToInit.forEach(function (name) {
+            var arr = self[name];
+            arr.forEach(function (o) {
+                o.element.remove();
+            });
+            arr.length = 0;
+        });
+    };
 
     function findElement(n, arr) {
         var o = arr.filter(function (d) {

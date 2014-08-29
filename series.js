@@ -63,6 +63,9 @@
     function example3() {
         var line = plot.addLine(0, 0, 2, 2);
         var point = plot.addPoint(1, 1, { movable: line });
+        var func = plot.addFunc(Math.sin);
+
+        plot.removeAll();
     }
 
     function example4() {
@@ -203,7 +206,7 @@
 
     //example1();
     //example2();
-    //example3();
+    example3();
     //example4();
     //example5();
     //example6();
@@ -212,6 +215,6 @@
     //example9();
     //example10();
     //example11();
-    example12();
+    //example12();
 
 })("graph", "new_graph");
