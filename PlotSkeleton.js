@@ -885,7 +885,7 @@ app.Plotter = function (self) {
             .domain(self.planeBorder.slice(0, 2))
             .range([0, self.width]);
         this.y = d3.scale.linear()
-            .domain(self.planeBorder.slice(2, 4))
+            .domain(self.planeBorder.slice(2, 4).reverse())
             .range([0, self.height]);
 
         this.plot = this.plot

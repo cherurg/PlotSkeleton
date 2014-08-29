@@ -204,9 +204,13 @@
         }, "Ползунок", 0, 10, 1, 1);
     }
 
+    function example13() {
+        plot.addFunc(Math.exp);
+    }
+
     //example1();
     //example2();
-    example3();
+    //example3();
     //example4();
     //example5();
     //example6();
@@ -216,5 +220,6 @@
     //example10();
     //example11();
     //example12();
+    example13();
 
 })("graph", "new_graph");
