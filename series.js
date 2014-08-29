@@ -173,8 +173,18 @@
         }, 4000);
     }
 
+    function test12() {
+        var controls = new app.Controls("controls");
+        var text = controls.addText("Привет!");
+        var i = 0;
+        setInterval(function () {
+            i += 1;
+            text.setText(i);
+        }, 1000)
+    }
+
     //test1();
-    test2();
+    //test2();
     //test3();
     //test4();
     //test5();
@@ -184,5 +194,6 @@
     //test9();
     //test10();
     //test11();
+    test12();
 
 })("graph", "new_graph");

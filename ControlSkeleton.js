@@ -43,6 +43,12 @@ app.Controls.prototype.addText = function (text, options) {
         this._newElem();
     }
     this.elem.appendChild(textEl);
+
+    return {
+        setText: function (text) {
+            textEl.innerHTML = text;
+        }
+    }
 };
 
 app.Controls.prototype._initInput = function () {
