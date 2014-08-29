@@ -101,8 +101,7 @@ app.Controls.prototype.addRange = function (callback, text, left, right, step, v
         range = document.createElement("input");
     div.setAttribute("class", "control");
     t.innerHTML = text;
-    div.appendChild(t);
-    div.appendChild(document.createElement("br"));
+    //div.appendChild(document.createElement("br"));
 
     range.setAttribute("type", "range");
     range.setAttribute("min", left);
@@ -115,6 +114,8 @@ app.Controls.prototype.addRange = function (callback, text, left, right, step, v
     });
 
     div.appendChild(range);
+    t.setAttribute("style", "margin-left: 10px");
+    div.appendChild(t);
     this.elem.appendChild(div);
 
     this.ranges = this.ranges || [];

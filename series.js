@@ -201,7 +201,7 @@
         }, "Ползунок", 0, 10, 1, 1);
     }
 
-    example1();
+    //example1();
     //example2();
     //example3();
     //example4();
@@ -212,6 +212,6 @@
     //example9();
     //example10();
     //example11();
-    //example12();
+    example12();
 
 })("graph", "new_graph");
