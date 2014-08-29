@@ -67,8 +67,9 @@ app.Plotter = function (self) {
             return;
         }
 
-        //Если options существует, то не трогать его. Если он undefined, то присвоить options пустой объект.
         options = options || {};
+        this.clc = options.click ? options.click : null;
+        //Если options существует, то не трогать его. Если он undefined, то присвоить options пустой объект.
         //Внутри цикла встречаются конструкции вроде this[field]. this - это объект, а field - имя поля, к которому
         // нужен доступ. Это второй из возможных способо обращения к полям объекта. Этот способ очень удобен в
         // динамических задачах. Например, здесь используются все свойства из options, которые могут быть у Plotter и
@@ -270,6 +271,11 @@ app.Plotter = function (self) {
         gy.exit().remove();
 
         g.call(zoom);
+        d3.select("rect")
+            .on("mousedown", function () {
+                self.clc(self.x.invert(d3.event.x - 10), self.y.invert(d3.event.y - 10));
+            });
+
 
         var i, length = self.points.length, point;
         for (i = 0; i < length; i += 1) {
@@ -357,8 +363,8 @@ app.Plotter = function (self) {
                 if (options.size) {
                     point.size = options.size;
                 }
-                if (options.onclick) {
-                    point.onclick = options.onclick;
+                if (options.clc) {
+                    point.clc = options.clc;
                 }
                 if (options.color) {
                     point.color = options.color;
@@ -403,8 +409,8 @@ app.Plotter = function (self) {
                         }));
             }
 
-            if (point.onclick) {
-                point.element.on("click", point.onclick);
+            if (point.clc) {
+                point.element.on("click", point.clc);
             }
 
             update();
@@ -869,7 +875,7 @@ app.Plotter = function (self) {
             .domain(self.planeBorder.slice(0, 2))
             .range([0, self.width]);
         this.y = d3.scale.linear()
-            .domain(self.planeBorder.slice(2, 4).reverse())
+            .domain(self.planeBorder.slice(2, 4))
             .range([0, self.height]);
 
         this.plot = this.plot

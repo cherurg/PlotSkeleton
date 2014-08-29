@@ -31,6 +31,12 @@ app.Controls.prototype.addButton = function (callback, text) {
         number: this.buttonsNumber++,
         button: div
     });
+
+    return {
+        setText: function (text) {
+            button.innerHTML = text;
+        }
+    }
 };
 
 app.Controls.prototype.addText = function (text, options) {
