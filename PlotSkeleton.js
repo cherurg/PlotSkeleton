@@ -139,6 +139,10 @@ app.Plotter = function (self) {
         return this.plotElementID;
     };
 
+    p.setGraphAccuracy = function (accuracy) {
+        this.graphAccuracy = accuracy;
+    };
+
     p.toString = function () {
         var objectInformation = "";
 
