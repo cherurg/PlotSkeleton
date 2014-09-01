@@ -143,6 +143,10 @@ app.Plotter = function (self) {
         this.graphAccuracy = accuracy;
     };
 
+    p.getGraphAccuracy = function () {
+        return this.graphAccuracy;
+    };
+
     p.toString = function () {
         var objectInformation = "";
 
@@ -649,7 +653,7 @@ app.Plotter = function (self) {
         var points = [], step, x, y,
             func = o.func;
 
-        step = (self.x.domain()[1] - self.x.domain()[0])/defaults.graphAccuracy;
+        step = (self.x.domain()[1] - self.x.domain()[0])/self.graphAccuracy;
         x = rangeLeft;
         while (x <= rangeRight) {
             y = func(x);

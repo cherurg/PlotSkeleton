@@ -1,10 +1,13 @@
 (function (id, id2) {
     //app.Plotter1 = app.Plotter({});
     var plot = Plotter(id, {
-        planeBorder: [-5, 5, -5, 5]/*,
+        planeBorder: [-5, 5, -5, 5],
+        /*graphAccuracy: 10,*/
+
+        //это свойство отвечает за действие, которое выполняется при клике по полю
         click: function (x, y) {
             plot.addPoint(x, y, {movable: true});
-        }*/
+        }
     });
     //раскомментируйте эту строчку, если нужен второй график
     //var plot2 = Plotter(id2);
