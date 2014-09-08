@@ -211,6 +211,27 @@
         plot.addFunc(Math.exp);
     }
 
+    function example14() {
+        var controls = new app.Controls("controls");
+
+        var sin = plot.addFunc(Math.sin);
+        var cos = plot.addFunc(Math.cos)
+
+        controls.addRange(function (value) {
+
+            plot.removeFunc(sin);
+            sin = plot.addFunc(function (x) {
+                return Math.sin(x) * value;
+            });
+
+            plot.removeFunc(cos);
+            cos = plot.addFunc(function (x) {
+                return Math.cos(x)*value;
+            })
+
+        }, "Ползунок:", 0, 10, 0.01, 1);
+    }
+
     //example1();
     //example2();
     //example3();
@@ -223,6 +244,7 @@
     //example10();
     //example11();
     //example12();
-    example13();
+    //example13();
+    example14();
 
 })("graph", "new_graph");
