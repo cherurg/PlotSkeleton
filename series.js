@@ -1,0 +1,642 @@
+(function (id, id2) {
+    //app.Plotter1 = app.Plotter({});
+    var plot = Plotter(id, {
+        planeBorder: [-0.2, 1, -0.2, 1.2]
+        /*graphAccuracy: 10,*/
+
+        //это свойство отвечает за действие, которое выполняется при клике по полю
+        /*click: function (x, y) {
+            plot.addPoint(x, y, {movable: true});
+        }*/
+    });
+    //раскомментируйте эту строчку, если нужен второй график
+    //var plot2 = Plotter(id2);
+
+    function example1() {
+
+        var point2 = plot.addPoint(0, 0, { movable: true });
+        var point = plot.addPoint(2, 2, { movable: false });
+        plot.removePoint(point.getNumber());
+        point = plot.addPoint(2, 2, { movable: true });
+        plot.removePoint(point.getNumber());
+
+        var line = plot.addLine(0, 0, 1, 1);
+        var line2 = plot.addLine(-1, -1, 4, 3, { color: 5, width: 10 });
+        plot.setTimeout(function () {
+            line.setX1(-2);
+            line.setY1(-3);
+            plot.removeFunc(func1.getNumber());
+            area2.setRangeRight(3.7);
+            plot.redraw();
+            plot.removeGraphArea(area);
+        }, 2000);
+        //plot.removeLine(line2.getNumber());
+        console.log("point2 number: " + point2.getNumber());
+        //plot.removeLine(line.getNumber());
+
+        var badLine = plot.addLine(1, 1, 1, 2);
+        console.log("badLine number: " + badLine.getNumber());
+
+        var func1 = plot.addFunc(Math.cos);
+        var func2 = plot.addFunc(function (x) {
+            return x * x;
+        });
+
+        var func3 = plot.addFunc(Math.sin, -20, 20);
+
+        var area = plot.addGraphArea(func2, 0, 1, "x");
+        var area2 = plot.addGraphArea(func3, 3.3, 3.5, "y");
+        var area3 = plot.addGraphArea(func3, 3.3, 3.5, "x");
+    }
+
+    function example2() {
+        var t = 0;
+        var point = plot.addPoint(Math.cos(t), Math.sin(t), {size: "tiny"});
+        var a = plot.setInterval(function () {
+            t += 0.1;
+            if (t > 1) {
+                clearInterval(a);
+            }
+            point.setX(Math.cos(t));
+            point.setY(Math.sin(t));
+            point.update();
+        }, 40);
+    }
+
+    function example3() {
+        var line = plot.addLine(0, 0, 2, 2);
+        var point = plot.addPoint(1, 1, { movable: line });
+        var func = plot.addFunc(Math.sin);
+
+        plot.removeAll();
+    }
+
+    function example4() {
+        var controls = new app.Controls("controls");
+        controls.addButton(function () {
+            alert("hello, world!");
+        }, "hello?");
+
+        controls.addRange(function (value) {
+            console.log(value);
+        }, "Ползунок:", 0, 10, 0.01, 0);
+    }
+
+    function example5() {
+        var line = plot.addLine(0, 0, 1, 2);
+        var func = plot.addFunc(Math.cos, -20, 20);
+        var areaX = plot.addGraphArea(func, 3.3, 3.5, "x");
+        var areaY = plot.addGraphArea(func, 3.3, 3.5, "y");
+
+        setTimeout(function () {
+            line.setY1(5);
+            line.setY2(-5);
+
+            areaX.setRangeRight(3.7);
+            areaY.setRangeRight(3.7);
+
+            plot.redraw();
+        }, 2000);
+    }
+
+    function example6() {
+        var controls = new app.Controls("controls");
+        controls.addCheckbox(function () {
+                alert("checked");
+            }, function () {
+                alert("unchecked");
+            },
+            false,
+            "hello");
+
+        controls.addButton(function () {
+            alert("hello, world!");
+        }, "hello?");
+    }
+
+    function example7() {
+        plot.addPoint(1, 1, {
+            onclick: function () {
+                alert("hello");
+            }
+        });
+    }
+
+    function example8() {
+        var controls = new app.Controls("controls");
+
+        var func = plot.addFunc(Math.sin);
+
+        controls.addRange(function (value) {
+            plot.removeFunc(func);
+            func = plot.addFunc(function (x) {
+                return Math.sin(x) * value;
+            });
+        }, "Ползунок:", 0, 10, 0.01, 1);
+    }
+
+    function example9() {
+        var func = plot.addFunc(function (x) {
+            return 3;
+        }, 1, 2, { color: 1, width: 1 });
+        var graphArea = plot.addGraphArea(func, 1, 2, "x");
+    }
+
+    function example10() {
+        var controls = new app.Controls("controls");
+
+        controls.addButton(function () {
+        }, "hello");
+        controls.addRange(function () {
+        }, "Привет!", 10, 12, 0.1, 11);
+        controls.addCheckbox(function () {
+        }, function () {
+        }, true, "checkbox");
+
+        var plot2 = Plotter("new_graph");
+        var controls2 = new app.Controls("new_controls");
+        controls2.addText("Какой-то текст");
+        controls2.addText("Какой-то другой текст с переносом", {newLine: true});
+
+        var smartControl = controls2.addRange(function (value) {
+            smartControl.setText("Значение ползунка: " + value);
+        }, "Значение ползунка: 0", 0, 10, 1, 0);
+    }
+
+    function example11() {
+        var arr = [];
+        arr.push([0, 0]);
+        arr.push([1, 0]);
+        arr.push([1, 1]);
+        arr.push([0, 1]);
+
+        var arr1 = [];
+        arr1.push([1, 0]);
+        arr1.push([2, 0]);
+        arr1.push([2, 1]);
+
+
+        var rect = plot.addFigure(arr, {color: 2});
+        plot.addFigure(arr1, {color: 3});
+
+        setTimeout(function () {
+            plot.removeFigure(rect);
+            plot.redraw();
+        }, 3000);
+        setTimeout(function () {
+            plot.addFigure(arr);
+        }, 4000);
+    }
+
+    function example12() {
+        var controls = new app.Controls("controls");
+        var text = controls.addText("Привет!");
+        var b = controls.addButton(function () {
+        }, "0");
+        var i = 0;
+        setInterval(function () {
+            i += 1;
+            text.setText(i);
+            b.setText(i);
+        }, 1000);
+
+        controls.addRange(function () {
+        }, "Ползунок", 0, 10, 1, 1);
+        controls.addText("", {newLine: true});
+        controls.addRange(function () {
+        }, "Ползунок", 0, 10, 1, 1);
+    }
+
+    function example13() {
+        plot.addFunc(Math.exp);
+    }
+
+    function example14() {
+        var controls = new app.Controls("controls");
+
+        var sin = plot.addFunc(Math.sin);
+        var cos = plot.addFunc(Math.cos);
+
+        controls.addRange(function (value) {
+
+            plot.removeFunc(sin);
+            sin = plot.addFunc(function (x) {
+                return Math.sin(x) * value;
+            });
+
+            plot.removeFunc(cos);
+            cos = plot.addFunc(function (x) {
+                return Math.cos(x)*value;
+            })
+
+        }, "Ползунок:", 0, 10, 0.01, 1);
+    }
+
+    function number57_4_a() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return Math.pow(x, n) - Math.pow(x, n + 1);
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ";
+
+        func = plot.addFunc(f(0), 0, 1);
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value), 0, 1);
+
+        }, rangeText + "0", 0, 30, 1, 0);
+    }
+
+    function number57_4_b() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return Math.pow(x, n) - Math.pow(x, 2*n);
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ";
+
+        func = plot.addFunc(f(0), 0, 1);
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value), 0, 1);
+
+        }, rangeText + "0", 0, 30, 1, 0);
+    }
+
+    function number57_4_c() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return Math.pow(x, n)/(1 + Math.pow(x, n));
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ";
+
+        func = plot.addFunc(f(0), 0, 1);
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value), 0, undefined);
+
+        }, rangeText + "0", 0, 30, 1, 0);
+    }
+
+    function number57_4_d() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return Math.sqrt(x*x + 1/(n*n));
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ",
+            startNumber = 1;
+
+        plot.setPlaneBorder([-2.5, 2.5, -1, 4]);
+        plot.redraw();
+        func = plot.addFunc(f(startNumber));
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value));
+
+        }, rangeText + "0", startNumber, 30, 1, 1);
+    }
+
+    function number57_4_e() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return Math.atan(n*x);
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ",
+            startNumber = 1;
+
+        plot.setPlaneBorder([-10, 10, -3, 3]);
+        plot.redraw();
+        func = plot.addFunc(f(startNumber));
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value));
+
+        }, rangeText + "0", startNumber, 30, 1, 1);
+    }
+
+    function number57_4_f() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return x*Math.atan(n*x);
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ",
+            startNumber = 1;
+
+        plot.setPlaneBorder([-3, 3, -1, 5]);
+        plot.redraw();
+        func = plot.addFunc(f(startNumber));
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value));
+
+        }, rangeText + "0", startNumber, 30, 1, 1);
+    }
+
+    function number57_4_g() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return n*Math.sin(1/(n*x));
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ",
+            startNumber = 1;
+
+        plot.setPlaneBorder([-1, 10, -1, 3]);
+        plot.redraw();
+        func = plot.addFunc(f(startNumber), 1, undefined);
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value), 1, undefined);
+
+        }, rangeText + "0", startNumber, 30, 1, 1);
+    }
+
+    function number57_4_h() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return Math.log(3 + (n*n*Math.exp(x))/(Math.pow(n, 4) + Math.exp(2*x)));
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ",
+            startNumber = 1;
+
+        plot.setPlaneBorder([-1, 10, -1, 3]);
+        plot.redraw();
+        func = plot.addFunc(f(startNumber), 0, undefined);
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value), 0, undefined);
+
+        }, rangeText + "0", startNumber, 100000000, 1, 1);
+    }
+
+    function number57_4_k_1() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return 1/Math.sqrt(x + 2) * Math.cos(n*x/(1 + Math.exp(n*x)));
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ",
+            startNumber = 1;
+
+        plot.setPlaneBorder([-1, 2, -1, 3]);
+        plot.redraw();
+        func = plot.addFunc(f(startNumber), 0, 1);
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value), 0, 1);
+
+        }, rangeText + "0", startNumber, 30, 1, 1);
+    }
+
+    function number57_4_k_2() {
+        function f (n) {
+            /*F_n(x)*/
+            return function (x) {
+                return 1/Math.sqrt(x + 2) * Math.cos(n*x/(1 + Math.exp(n*x)));
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ",
+            startNumber = 1;
+
+        plot.setPlaneBorder([-0.5, 10, -1, 3]);
+        plot.redraw();
+        func = plot.addFunc(f(startNumber), 1, undefined);
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value), 1, undefined);
+
+        }, rangeText + "0", startNumber, 30, 1, 1);
+    }
+
+    function number57_4_m() {
+        function f(n) {
+            /*F_n(x)*/
+            return function (x) {
+                return Math.pow(1 + Math.pow(x, 2*n), 1/(2*n))
+            }
+        }
+
+        var controls,
+            func,
+            rangeText = "Номер функции: ",
+            startNumber = 1;
+
+        plot.setPlaneBorder([-3, 3, 0.5, 3]);
+        plot.redraw();
+        func = plot.addFunc(f(startNumber));
+
+        controls = new app.Controls("controls");
+
+        controls.addRange(function (value) {
+
+            this.setText(rangeText + value);
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value));
+
+        }, rangeText + "0", startNumber, 30, 1, 1);
+    }
+
+    function log() {
+        var controls,
+            rangeText = "Номер функции: ",
+            func,
+            startNumber = 0;
+
+        function f(n) {
+            return function (x) {
+                var y = Math.pow(-1, n)*Math.pow(x, n + 1) / (n + 1);
+
+                return y;
+            }
+        }
+
+        plot.setPlaneBorder([-5, 5, -5, 5]);
+        plot.redraw();
+
+        func = plot.addFunc(f(startNumber));
+
+        controls = new app.Controls("controls");
+        controls.addRange(function (value) {
+            this.setText(rangeText + value);
+
+            plot.removeFunc(func);
+            func = plot.addFunc(f(value));
+
+        }, rangeText + "0", startNumber, 10, 1, 1);
+    }
+
+    function log_sum() {
+        var controls,
+            rangeText = "Номер функции: ",
+            func,
+            startNumber = 0;
+
+        function f(n) {
+            return function (x) {
+                var y = Math.pow(-1, n)*Math.pow(x, n + 1) / (n + 1);
+
+                return y;
+            }
+        }
+
+        function f_sum(start, finish) {
+            var Func = [],
+                n;
+
+            for (n = start; n <= finish; n += 1) {
+                Func.push(f(n));
+            }
+
+            return function (x) {
+                var y = 0,
+                    i;
+
+                for (i = 0; i < Func.length; i += 1) {
+                    y += Func[i](x);
+                }
+
+                return y;
+            }
+        }
+
+        plot.setPlaneBorder([-5, 5, -5, 5]);
+        plot.redraw();
+
+        func = plot.addFunc(f(startNumber));
+
+        controls = new app.Controls("controls");
+        controls.addRange(function (value) {
+            this.setText(rangeText + value);
+
+            plot.removeFunc(func);
+            func = plot.addFunc(f_sum(startNumber, value));
+
+        }, rangeText + "0", startNumber, 10, 1, 1);
+    }
+
+    //example1();
+    //example2();
+    //example3();
+    //example4();
+    //example5();
+    //example6();
+    //example7();
+    //example8();
+    //example9();
+    //example10();
+    //example11();
+    //example12();
+    //example13();
+    //example14();
+
+    //number57_4_a();
+    //number57_4_b();
+    //number57_4_c();
+    //number57_4_d();
+    //number57_4_e();
+    //number57_4_f();
+    //number57_4_g();
+    //number57_4_h();
+    //number57_4_k_1();
+    //number57_4_k_2();
+    //number57_4_m();
+
+    log();
+    //log_sum();
+
+})("graph", "new_graph");

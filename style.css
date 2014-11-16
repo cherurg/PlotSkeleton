@@ -1,0 +1,18 @@
+svg g text {
+    -ms-user-select: none;
+
+    -moz-user-select: none;
+
+    -khtml-user-select: none;
+
+    -webkit-user-select: none;
+}
+
+.control {
+    float: left;
+    margin-right: 15px;
+}
+
+#controls td {
+    height: 70px;
+}

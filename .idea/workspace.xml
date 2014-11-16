@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5dd9d102-afa3-4df3-8c6c-9dcee3958060" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ControlSkeleton.js" afterPath="$PROJECT_DIR$/ControlSkeleton.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/series.js" afterPath="$PROJECT_DIR$/series.js" />
+    </list>
+    <ignored path="PlotSkeleton.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="PlotSkeleton" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="series.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/series.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.56" vertical-offset="1407" max-vertical-offset="20704">
+              <caret line="53" column="69" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlotSkeleton.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20876586" vertical-offset="13931" max-vertical-offset="33804">
+              <caret line="392" column="26" selection-start-line="392" selection-start-column="16" selection-end-line="392" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MathJax.js" pinned="false" current-in-tab="false">
+        <entry file="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+          <provider selected="true" editor-type-id="httpFileEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="d3.v2.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/d3.v2.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="189">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="true" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="JsBowerSettings">
+    <exe-path />
+    <config-path />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="960" />
+    <option name="width" value="960" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PlotSkeleton" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PlotSkeleton" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PlotSkeleton" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="Settings.JavaScript.Linters.JSLint" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.html" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="commit c&#9;ACTION&#9;ChangesView.Commit&#10;push&#9;ACTION&#9;Git.Push&#10;ignore&#9;ACTION&#9;Cvs.Ignore" />
+    <property name="FullScreen" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="224" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="241" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="242" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="224" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="241" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="242" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="ignore_missing_gitignore" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Алексей\WebstormProjects\PlotSkeleton" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.chr debug">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="false" name="chr debug" type="JavascriptDebugType" factoryName="JavaScript Debug" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:63342/PlotSkeleton/index.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.chr debug" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" myUseAcceleration="nothing">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5dd9d102-afa3-4df3-8c6c-9dcee3958060" name="Default" comment="" />
+      <created>1404221108594</created>
+      <option name="number" value="Default" />
+      <updated>1404221108594</updated>
+    </task>
+    <task id="LOCAL-00001" summary="first commit&#10;">
+      <created>1404222497679</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1404222497679</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Геттеры, сеттеры width, height. Общая структура конструктора.">
+      <created>1404252983985</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1404252983985</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Добавил возмоность указать границы, геттер и сеттер.&#10;Константы теперь приватное поле, у которого нет сеттера, но есть геттер">
+      <created>1404821029499</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1404821029499</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Хорошая функция-конструктор">
+      <created>1404822960536</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1404822960536</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Проверка в конструкторе, является ли elementID строкой">
+      <created>1404823121147</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1404823121147</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Комментарии">
+      <created>1404824652801</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1404824652801</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Базовый метод redraw&#10;И без костылей!">
+      <created>1404826924500</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1404826924500</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Сетка (скорее всего без возможности движения)">
+      <created>1404831964351</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1404831964351</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Сетка с возможностью движения">
+      <created>1405336574387</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1405336574387</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Запрет выделения текста в графе">
+      <created>1405343027980</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1405343027980</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Функция инициализации">
+      <created>1405344992803</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1405344992803</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Добавление и удаление точек&#10;Рефакторинг redraw">
+      <created>1405358009824</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1405358009824</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Опция movable у точки">
+      <created>1405426442655</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1405426442655</updated>
+    </task>
+    <task id="LOCAL-00014" summary="removeLine, рефакторинг removePoint">
+      <created>1405430112868</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1405430112868</updated>
+    </task>
+    <task id="LOCAL-00015" summary="addLine, removeLine">
+      <created>1405447717350</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1405447717350</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Добавлен случай вертикальной линии в addLine.&#10;removeLine&#10;">
+      <created>1405449203776</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1405449203776</updated>
+    </task>
+    <task id="LOCAL-00017" summary="addLine&#10;Решена проблема с рисованием элементов графика за пределами, собственно, графика (в области подписи координатных осей)&#10;">
+      <created>1405456219812</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1405456219812</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Поднял переменные наверх">
+      <created>1405460067540</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1405460067540</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Легкое решение проблемы self.">
+      <created>1405460421393</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1405460421393</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Убрал использование const ради совместимости с IE. IE - это самый большой позор всего интернета, были им и остается. Надеюсь, в будущем он просто перестанет существовать.">
+      <created>1405601738620</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1405601738620</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Добавил порядок прорисовки обектов">
+      <created>1405613267412</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1405613267412</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Функция теперь всегда прорисовывается с нужной точностью&#10;Добавил заготовку для GraphArea">
+      <created>1405621600909</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1405621600909</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Постоянная плотность узлов прорисовки функции">
+      <created>1405622237634</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1405622237634</updated>
+    </task>
+    <task id="LOCAL-00024" summary="GraphArea&#10;Add and Remove methods">
+      <created>1405626046166</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1405626046166</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Исправление отрисовки функции">
+      <created>1405628845921</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1405628845921</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Перемещение GraphArea&#10;Методы setRangeLeft И setRangeRight для GraphArea">
+      <created>1405629702481</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1405629702481</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Ограничение высоты прорисовки функции">
+      <created>1405689930861</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1405689930861</updated>
+    </task>
+    <task id="LOCAL-00028" summary="update метод у точки&#10;Работает во всех браузерах">
+      <created>1405698124431</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1405698124431</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Цвета">
+      <created>1405708973840</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1405708973840</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Точка движется по отрезку">
+      <created>1405723558303</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1405723558303</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Функция-конструктор">
+      <created>1405785877145</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1405785877145</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Обертки для setTimeout и setInterval">
+      <created>1405787093132</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1405787093132</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Контролы">
+      <created>1405863712658</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1405863712658</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Убрал redraw из addPoint">
+      <created>1406932195013</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1406932195013</updated>
+    </task>
+    <task id="LOCAL-00035" summary="test5 с демонстрацией setRangeRight, setY1, setY2">
+      <created>1407068872282</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1407068872282</updated>
+    </task>
+    <task id="LOCAL-00036" summary="добавил checkbox&#10;">
+      <created>1407070867088</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1407070867088</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Range теперь возвращает строку">
+      <created>1407096196258</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1407096196258</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Изменен способ работы с размером точек">
+      <created>1407194843289</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1407194843289</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Добавил колбеки для нажатия по точкам">
+      <created>1407195947136</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1407195947136</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Цвета для точек">
+      <created>1407279425887</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1407279425887</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Цвета для линий и толщина">
+      <created>1407428751525</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1407428751525</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Ридми">
+      <created>1407428937149</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1407428937149</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Ридми">
+      <created>1407428994610</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1407428994610</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Удаление-добавление функции">
+      <created>1408556312071</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1408556312071</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Второй график">
+      <created>1408738401874</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1408738401874</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Толщина графиков, их цвет">
+      <created>1408919411120</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1408919411120</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Толщина и цвет графиков readme">
+      <created>1408919484942</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1408919484942</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Фиксы controlskeleton">
+      <created>1409159213448</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1409159213448</updated>
+    </task>
+    <task id="LOCAL-00049" summary="MathJax">
+      <created>1409160164878</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1409160164878</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Прямоугольники">
+      <created>1409162408449</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1409162408449</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Верстка">
+      <created>1409173549317</created>
+      <option name="number" value="00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1409173549317</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Вторые контролы">
+      <created>1409173854363</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1409173854363</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Обновление test2. clearInterval">
+      <created>1409219967015</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1409219967015</updated>
+    </task>
+    <task id="LOCAL-00054" summary="test.setText">
+      <created>1409321509965</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1409321509965</updated>
+    </task>
+    <task id="LOCAL-00055" summary="ивент по клику">
+      <created>1409334972946</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1409334972946</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Инфа о ползунке справа.">
+      <created>1409335217510</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1409335217510</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Инфа о ползунке справа.">
+      <created>1409336116122</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1409336116122</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Фикс зеркального отражения">
+      <created>1409343304504</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1409343304504</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Фикс сеттера graphAcuracy">
+      <created>1409432597440</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1409432597440</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Фикс сеттера graphAcuracy">
+      <created>1409607770601</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1409607770601</updated>
+    </task>
+    <task id="LOCAL-00061" summary="example14">
+      <created>1410169784009</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1410169784009</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1668682" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3265306" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3340708" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="Убрал redraw из addPoint" />
+    <MESSAGE value="test5 с демонстрацией setRangeRight, setY1, setY2" />
+    <MESSAGE value="добавил checkbox&#10;" />
+    <MESSAGE value="Range теперь возвращает строку" />
+    <MESSAGE value="Изменен способ работы с размером точек" />
+    <MESSAGE value="Добавил колбеки для нажатия по точкам" />
+    <MESSAGE value="Цвета для точек" />
+    <MESSAGE value="Цвета для линий и толщина" />
+    <MESSAGE value="Ридми" />
+    <MESSAGE value="Удаление-добавление функции" />
+    <MESSAGE value="Второй график" />
+    <MESSAGE value="Толщина графиков, их цвет" />
+    <MESSAGE value="Толщина и цвет графиков readme" />
+    <MESSAGE value="Фиксы controlskeleton" />
+    <MESSAGE value="MathJax" />
+    <MESSAGE value="Прямоугольники" />
+    <MESSAGE value="Верстка" />
+    <MESSAGE value="Вторые контролы" />
+    <MESSAGE value="Обновление test2. clearInterval" />
+    <MESSAGE value="test.setText" />
+    <MESSAGE value="ивент по клику" />
+    <MESSAGE value="Инфа о ползунке справа." />
+    <MESSAGE value="Фикс зеркального отражения" />
+    <MESSAGE value="Фикс сеттера graphAcuracy" />
+    <MESSAGE value="example14" />
+    <option name="LAST_COMMIT_MESSAGE" value="example14" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="121" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="212" max-vertical-offset="728">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ControlSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="1482">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1144" max-vertical-offset="15106">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1001" max-vertical-offset="1846">
+          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="212" max-vertical-offset="728">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ControlSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="1482">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1144" max-vertical-offset="15106">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="650">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="1638">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="16120" max-vertical-offset="19760">
+          <caret line="666" column="75" selection-start-line="666" selection-start-column="75" selection-end-line="666" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="650">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="1638">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="16120" max-vertical-offset="19760">
+          <caret line="666" column="75" selection-start-line="666" selection-start-column="75" selection-end-line="666" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1638">
+          <caret line="51" column="12" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="650">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20748">
+          <caret line="541" column="17" selection-start-line="541" selection-start-column="17" selection-end-line="541" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="884">
+          <caret line="1" column="61" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="650">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="182" max-vertical-offset="15808">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="260">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3.v2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1997" max-vertical-offset="3640">
+          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="312" max-vertical-offset="598">
+          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="260">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3.v2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1612" max-vertical-offset="3692">
+          <caret line="157" column="13" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="312" max-vertical-offset="598">
+          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="260">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3.v2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="433" max-vertical-offset="1560">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="312" max-vertical-offset="598">
+          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
+          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3.v2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="520" max-vertical-offset="676">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="312" max-vertical-offset="598">
+          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
+          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3.v2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="676">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="312" max-vertical-offset="598">
+          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
+          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3321739" vertical-offset="26303" max-vertical-offset="99216">
+          <caret line="1019" column="0" selection-start-line="1019" selection-start-column="0" selection-end-line="1019" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="2204" max-vertical-offset="24362">
+          <caret line="96" column="17" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://translate.yandex.ru/v1.91/js/core.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3.v2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24751382" vertical-offset="0" max-vertical-offset="905">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58878505" vertical-offset="584" max-vertical-offset="1440">
+          <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0439814" vertical-offset="1722" max-vertical-offset="5408">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ControlSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18497758" vertical-offset="315" max-vertical-offset="4480">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.56" vertical-offset="1407" max-vertical-offset="20704">
+          <caret line="53" column="69" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlotSkeleton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20876586" vertical-offset="13931" max-vertical-offset="33804">
+          <caret line="392" column="26" selection-start-line="392" selection-start-column="16" selection-end-line="392" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
